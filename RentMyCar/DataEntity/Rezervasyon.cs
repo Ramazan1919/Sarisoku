@@ -18,12 +18,17 @@ namespace DataEntity
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime AlisTarihi { get; set; }
- 
+
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime IadeTarihi { get; set; }
 
         [Required]
         public string AlisveIadeyeri { get; set; }
+
+        public ReservationsStatus Status { get; set; }
+
+        public virtual Car Car { get; set; }
+        public virtual RentUser RentUser { get; set; }
     }
 }

@@ -20,8 +20,11 @@
 
             //  You can use the DbSet<T>.AddOrUpdate() helper extension method
             //  to avoid creating duplicate seed data.
-            Seed2(context);
 
+            if (context.Admins.Count() <= 0)
+            {
+                Seed2(context);
+            }
         }
 
         public void Seed2(RentACarContext context)
@@ -38,8 +41,8 @@
             RentUser rentUser = new RentUser()
             {
                 Id = 1,
-                Name="Osman",
-                PhoneNumber="05423311086"
+                Name = "Osman",
+                PhoneNumber = "05423311086"
             };
             context.RentUsers.Add(rentUser);
             context.SaveChanges();
@@ -68,12 +71,13 @@
             Rezervasyon rezervasyon = new Rezervasyon()
             {
                 Id = 1,
-                AdminID=1,
-                CarID=1,
-                RentUserID=1,
+                AdminID = 1,
+                CarID = 1,
+                RentUserID = 1,
                 AlisTarihi = DateTime.Now,
                 AlisveIadeyeri = "Çorum",
                 IadeTarihi = DateTime.Now,
+                Status =  ReservationsStatus.Active
             };
             context.Rezervasyons.Add(rezervasyon);
             context.SaveChanges();

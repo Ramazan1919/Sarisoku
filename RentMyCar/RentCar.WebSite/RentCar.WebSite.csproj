@@ -357,6 +357,7 @@
     <Content Include="Views\Car\Details.cshtml" />
     <Content Include="Views\Home\ListOfCars.cshtml" />
     <Content Include="Views\Reservation\Index.cshtml" />
+    <Content Include="Views\Reservation\Detail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />

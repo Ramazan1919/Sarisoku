@@ -10,7 +10,7 @@ namespace RentCar.WebSite
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute("ReservationManagement", "rezervasyon-yonetimi", new { controller = "Reservation", action = "Index" });
-            routes.MapRoute("ReservationDetail", "rezervasyon-detay/{id}", new { controller = "Reservation", action = "Detail" });
+            routes.MapRoute("ReservationDetail", "rezervasyon-detay/{id}", new { controller = "Reservation", action = "Detail", id = UrlParameter.Optional });
 
             routes.MapRoute(
                 name: "Default",

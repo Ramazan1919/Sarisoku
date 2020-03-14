@@ -1,19 +1,21 @@
-﻿@model List<DataEntity.Rezervasyon>
+﻿@using BusınessLayer.Util;
+@model List<DataEntity.Rezervasyon>
 @{
     ViewBag.Title = "Rezervasyon Listesi";
 }
 
-<h2>@ViewBag.Title</h2>
+<h2>@ViewBag.Title <a class="mb10 btn btn-danger" href="@Url.RouteUrl("ReservationDetail", new { id= 0})">+ Ekle</a></h2>
 
-<a class="mb10 btn btn-danger" href="@Url.RouteUrl("ReservationDetail", new { id= 0})">Rezervasyon Ekle</a>
+
 <table class="table table-bordered">
     <tr>
         <th>#ID</th>
-        <th>Araç</th>
+        <th>Araç Bilgileri</th>
         <th>Kiralayan</th>
         <th>Alış Tarihi</th>
         <th>İade Tarihi</th>
-        <th>Alis ve Iade Yeri/</th>
+        <th>Alis ve Iade Yeri</th>
+        <th>Kayıt Durumu</th>
         <th>İşlemler/</th>
     </tr>
 
@@ -21,20 +23,32 @@
     {
         <tr>
             <td>@reservation.Id</td>
-            <td>Araç</td>
-            <td>Kiralayan</td>
+            <td>
+                @if (reservation.Car != null)
+                {
+                    <b>@reservation.Car.ArabaAdi</b>
+                }
+            </td>
+            <td>
+                @if (reservation.RentUser != null)
+                {
+                    <b>@reservation.RentUser.Name</b><br />
+                    <span>@reservation.RentUser.PhoneNumber</span>
+                }
+            </td>
             <td>@reservation.AlisTarihi.ToString("dd.MM.yyyy HH:mm")</td>
             <td>@reservation.IadeTarihi.ToString("dd.MM.yyyy HH:mm")</td>
             <td>@reservation.AlisveIadeyeri</td>
+            <td>@reservation.GetStatusText()</td>
             <td><a class="mb10 btn btn-success" href="@Url.RouteUrl("ReservationDetail", new { id= reservation.Id})">Düzenle</a></td>
         </tr>
     }
 </table>
 
 <style>
-    .mb10{margin-bottom:10px;}
+    .mb10 { margin-bottom: 10px; }
 
-    .btn { background: #000000; border: 2px solid #000000; color: #fff; padding:5px 14px; }
+    .btn { background: #000000; border: 2px solid #000000; color: #fff; padding: 5px 14px; }
     .btn-danger { background: #ff006e; border: 2px solid #ff006e; color: #fff; }
     .btn-danger:hover { background: #dc143c; border: 2px solid #dc143c; color: #fff; }
 </style>

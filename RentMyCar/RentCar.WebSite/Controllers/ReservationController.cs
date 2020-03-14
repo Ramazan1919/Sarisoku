@@ -12,11 +12,16 @@ namespace RentCar.WebSite.Controllers
             _reservationManager = new ReservationManager();
         }
 
-        //List all reservations
         public ActionResult Index()
         {
-            var searchResult = _reservationManager.List();
+            var searchResult = _reservationManager.GetReservationList();
             return View(searchResult);
+        }
+
+        public ActionResult Detail(int id)
+        {
+            var model = _reservationManager.GetReservationDetail(id);
+            return View(model);
         }
     }
 }
