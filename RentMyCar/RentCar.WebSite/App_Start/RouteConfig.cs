@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using System.Web.Routing;
 
 namespace RentCar.WebSite
@@ -12,6 +8,9 @@ namespace RentCar.WebSite
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
+
+            routes.MapRoute("ReservationManagement", "rezervasyon-yonetimi", new { controller = "Reservation", action = "Index" });
+            routes.MapRoute("ReservationDetail", "rezervasyon-detay/{id}", new { controller = "Reservation", action = "Detail" });
 
             routes.MapRoute(
                 name: "Default",
