@@ -1,4 +1,4 @@
-﻿@model IEnumerable<DataEntity.Cars>
+﻿@model IEnumerable<DataEntity.Car>
 
 @{
     ViewBag.Title = "Index";
@@ -41,9 +41,9 @@
         <th>
             @Html.DisplayNameFor(model => model.GunlukUcret)
         </th>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.KampanyaOranı)
-        </th>
+        </th>*@
         <th>
             @Html.DisplayNameFor(model => model.SürücüYas)
         </th>
@@ -87,9 +87,9 @@
         <td>
             @Html.DisplayFor(modelItem => item.GunlukUcret)
         </td>
-        <td>
+        @*<td>
             @Html.DisplayFor(modelItem => item.KampanyaOranı)
-        </td>
+        </td>*@
         <td>
             @Html.DisplayFor(modelItem => item.SürücüYas)
         </td>

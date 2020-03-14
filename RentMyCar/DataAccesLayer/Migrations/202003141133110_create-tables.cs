@@ -3,7 +3,7 @@
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class denedene1 : DbMigration
+    public partial class createtables : DbMigration
     {
         public override void Up()
         {
@@ -28,30 +28,38 @@
                         Plaka = c.String(nullable: false),
                         KasaTipi = c.String(nullable: false),
                         YakitTipi = c.String(nullable: false),
-                        GunlukUcret = c.Int(nullable: false),
-                        ToplamKiralanmaSayisi = c.Int(nullable: false),
-                        KampanyaOranı = c.Int(nullable: false),
+                        GunlukUcret = c.Decimal(nullable: false, precision: 18, scale: 2),
                         VitesTürü = c.String(nullable: false),
                         IsActive = c.Boolean(nullable: false),
                         EhliyetYas = c.Int(nullable: false),
                         BagajLitre = c.Int(nullable: false),
                         SürücüYas = c.Int(nullable: false),
                         YolcuSayisi = c.Int(nullable: false),
-                        Depozito = c.Int(nullable: false),
-                        RezervasyonID = c.Int(nullable: false),
+                        Depozito = c.Decimal(nullable: false, precision: 18, scale: 2),
                     })
-                .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Rezervasyons", t => t.RezervasyonID, cascadeDelete: true)
-                .Index(t => t.RezervasyonID);
+                .PrimaryKey(t => t.Id);
+            
+            CreateTable(
+                "dbo.RentUsers",
+                c => new
+                    {
+                        Id = c.Int(nullable: false, identity: true),
+                        Name = c.String(nullable: false, maxLength: 30),
+                        PhoneNumber = c.String(nullable: false),
+                    })
+                .PrimaryKey(t => t.Id);
             
             CreateTable(
                 "dbo.Rezervasyons",
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
-                        AlisveIadeyeri = c.String(nullable: false),
+                        AdminID = c.Int(nullable: false),
+                        CarID = c.Int(nullable: false),
+                        RentUserID = c.Int(nullable: false),
                         AlisTarihi = c.DateTime(nullable: false),
                         IadeTarihi = c.DateTime(nullable: false),
+                        AlisveIadeyeri = c.String(nullable: false),
                     })
                 .PrimaryKey(t => t.Id);
             
@@ -59,9 +67,8 @@
         
         public override void Down()
         {
-            DropForeignKey("dbo.Cars", "RezervasyonID", "dbo.Rezervasyons");
-            DropIndex("dbo.Cars", new[] { "RezervasyonID" });
             DropTable("dbo.Rezervasyons");
+            DropTable("dbo.RentUsers");
             DropTable("dbo.Cars");
             DropTable("dbo.Admins");
         }

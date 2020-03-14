@@ -7,13 +7,13 @@ namespace DataAccesLayer.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.0")]
-    public sealed partial class denedene1 : IMigrationMetadata
+    public sealed partial class createtables : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(denedene1));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(createtables));
         
         string IMigrationMetadata.Id
         {
-            get { return "202003131853283_denedene1"; }
+            get { return "202003141133110_create-tables"; }
         }
         
         string IMigrationMetadata.Source

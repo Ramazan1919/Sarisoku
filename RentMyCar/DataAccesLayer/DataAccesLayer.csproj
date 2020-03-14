@@ -55,13 +55,9 @@
     <Compile Include="Concrete\EF\GenericRepository.cs" />
     <Compile Include="Concrete\EF\RentACarContext.cs" />
     <Compile Include="Concrete\EF\RepositoryBase.cs" />
-    <Compile Include="Migrations\202003131853283_denedene1.cs" />
-    <Compile Include="Migrations\202003131853283_denedene1.designer.cs">
-      <DependentUpon>202003131853283_denedene1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202003141034506_Last.cs" />
-    <Compile Include="Migrations\202003141034506_Last.designer.cs">
-      <DependentUpon>202003141034506_Last.cs</DependentUpon>
+    <Compile Include="Migrations\202003141133110_create-tables.cs" />
+    <Compile Include="Migrations\202003141133110_create-tables.designer.cs">
+      <DependentUpon>202003141133110_create-tables.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -77,11 +73,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202003131853283_denedene1.resx">
-      <DependentUpon>202003131853283_denedene1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202003141034506_Last.resx">
-      <DependentUpon>202003141034506_Last.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202003141133110_create-tables.resx">
+      <DependentUpon>202003141133110_create-tables.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -42,8 +42,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="RentUser.cs" />
     <Compile Include="Admin.cs" />
-    <Compile Include="Cars.cs" />
+    <Compile Include="Car.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rezervasyon.cs" />
   </ItemGroup>

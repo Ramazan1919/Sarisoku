@@ -35,10 +35,8 @@ namespace RentACar.Controllers
 
         // POST: Car/Create
         [HttpPost]
-        public ActionResult Create(Cars cars, HttpPostedFileBase ProfileImage)
+        public ActionResult Create(Car model, HttpPostedFileBase ProfileImage)
         {
-
-            // TODO: Add insert logic here
             if (ModelState.IsValid)
             {
                 if (ProfileImage != null &&
@@ -46,24 +44,18 @@ namespace RentACar.Controllers
                 ProfileImage.ContentType == "image/jpg" ||
                 ProfileImage.ContentType == "image/png"))
                 {
-                    carManager.Insert(cars);
-                    string filename = $"user_{cars.Id}.{ProfileImage.ContentType.Split('/')[1]}";
+                    carManager.Insert(model);
+                    string filename = $"user_{model.Id}.{ProfileImage.ContentType.Split('/')[1]}";
                     ProfileImage.SaveAs(Server.MapPath($"~/Content/Admin/Content/Photos/Cars/{filename}"));
-                    cars.ImageUrl = filename;
+                    model.ImageUrl = filename;
                 }
-
-                
                 return RedirectToAction("Index", "Car");
             }
             else
             {
-                return View(cars);
+                return View(model);
             }
-
-
          }
-
-            
 
         // GET: Car/Edit/5
         public ActionResult Edit(int id)
