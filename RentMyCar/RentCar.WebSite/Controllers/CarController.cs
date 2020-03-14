@@ -22,7 +22,9 @@ namespace RentACar.Controllers
         // GET: Car/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            var model =carManager.GetById(id);
+            
+            return View(model);
         }
 
         // GET: Car/Create
@@ -44,11 +46,13 @@ namespace RentACar.Controllers
                 ProfileImage.ContentType == "image/jpg" ||
                 ProfileImage.ContentType == "image/png"))
                 {
+                    carManager.Insert(cars);
                     string filename = $"user_{cars.Id}.{ProfileImage.ContentType.Split('/')[1]}";
-                    ProfileImage.SaveAs(Server.MapPath($"~/Content/images/{filename}"));
+                    ProfileImage.SaveAs(Server.MapPath($"~/Content/Admin/Content/Photos/Cars/{filename}"));
                     cars.ImageUrl = filename;
                 }
-                carManager.Insert(cars);
+
+                
                 return RedirectToAction("Index", "Car");
             }
             else

@@ -1,0 +1,207 @@
+﻿@using DataEntity
+
+@model IEnumerable<Cars>
+
+
+
+<div class="container-fluid"><h1>Araç Kiralama</h1></div>
+
+<div class="main">
+
+    <section id="page">
+
+        <article>
+
+
+
+            <div class="result">
+                <div class="tree">
+                    <div class="container-fluid">
+
+                        <ul>
+                            <li>
+                                <span>Alış ve Teslim Yeri</span><h2> </h2>
+                               
+                            </li>
+                            <li>
+                                <span>Alış ve Teslim Saati</span><h2>14 Mar, 15:15 - 21 Mar, 15:15</h2>
+                               
+                            </li>
+                            <li class="active"><span>Araç Modeli</span><h2>Araç Modelini Seçin</h2></li>
+                            <li><span>İlave Ekipman</span><h2>İlave Ekipman İçin İletişime Geçin</h2></li>
+                        </ul>
+
+                    </div>
+                </div>
+                <br />
+
+                @foreach (Cars cars in Model)
+                {
+
+                    <div class="box">
+
+                        <div class="left">
+
+                            <div class="content">
+
+                                <div class="contentLeft">
+
+                                    <h4>@cars.ArabaAdi   </h4>
+
+                                    <h5> veya benzeri @cars.YakitTipi   @cars.VitesTürü</h5>
+
+                                    <figure>
+
+                                        <img src="~/Content/Admin/Content/Photos/Cars/@cars.ImageUrl" class="img-responsive" alt="273">
+
+                                    </figure>
+
+                                </div>
+
+                                <div class="contentRight">
+
+                                    <ul>
+
+                                        <li>
+                                            <i class="icon-central-fuel" aria-hidden="true"> </i>
+                                            @cars.YakitTipi
+                                        </li>
+
+                                        <li>
+                                            <i class="icon-central-transmission" aria-hidden="true"></i>
+                                            @cars.VitesTürü
+                                        </li>
+
+                                        <li class="tooltips">
+
+                                            <i class="icon-central-card" aria-hidden="true"></i>
+
+                                            + @cars.EhliyetYas
+                                            <span>Sürücü Belgesi @cars.EhliyetYas Yıl ve Daha Uzun Süreli</span>
+
+                                        </li>
+
+                                        <li class="tooltips">
+
+                                            <i class="icon-central-user" aria-hidden="true"></i>
+
+                                            + @cars.SürücüYas
+                                            <span>@cars.SürücüYas Yaş ve Üzeri</span>
+
+                                        </li>
+
+                                    </ul>
+
+                                    <p>Depozito Tutarı: <label>@cars.Depozito ₺</label></p>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                        <div class="right price-buttons">
+
+                            <span class="reservation-text">Rezervasyon ekranına gitmek için aşağıdaki butonu kullanabilirsiniz.</span>
+
+                            <button onclick="window.location.href='/'" class="buyNow">
+
+                                Rezervasyon Yap
+
+                            </button>
+
+                        </div>
+
+                    </div>
+                }
+
+
+            </div>
+                
+         </article>
+
+     </section>
+
+
+</div>
+
+
+
+
+            <!-- cookiealert styles -->
+
+            <link rel="stylesheet" href="~/Content/Scripts/cookiealert.css">
+
+
+
+
+
+            <link href="~/Content/Themes/css/font-awesome.min.css" rel="stylesheet">
+
+            <link href="~/Content/Themes/css/font.css" rel="stylesheet">
+            <link href="~/Content/Themes/css/ozelStyle.css" rel="stylesheet">
+            <link href="~/Content/Scripts/fancybox/dist/jquery.fancybox.css" rel="stylesheet">
+            <link href="~/Content/Themes/css/jqueryui.css" rel="stylesheet">
+            <link href="~/Content/Themes/css/Bootstrap/cssbootstrap.min.css?v=1" rel="stylesheet">
+            <link href="~/Content\Themes\css\ozelDesktop.css" rel="stylesheet">
+            <link href="~/Content\Themes\css\page.min-2.css?v=20200307113008" rel="stylesheet">
+            <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+            <link href="~/Content\Themes\css\defaultStyle.css?v=1" rel="stylesheet">
+            <!-- Global site tag (gtag.js) - AdWords: 1011802234 -->
+            <script async="" src="https://www.googletagmanager.com/gtag/js?id=AW-1011802234"></script>
+            <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag() { dataLayer.push(arguments); }
+                gtag('js', new Date());
+
+                gtag('config', 'AW-1011802234');
+            </script>
+
+            <!-- Global site tag (gtag.js) - Google Analytics -->
+
+            <script async="" src="https://www.googletagmanager.com/gtag/js?id=UA-24205944-1"></script>
+            <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag() { dataLayer.push(arguments); }
+                gtag('js', new Date());
+
+                gtag('config', 'UA-24205944-1');
+            </script>
+            <!-- Google Tag Manager Central Tr Com by AdresGezgini -->
+            <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-T3SX9C" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+            <script>
+                (function (w, d, s, l, i) {
+                    w[l] = w[l] || []; w[l].push({
+                        'gtm.start':
+                            new Date().getTime(), event: 'gtm.js'
+                    }); var f = d.getElementsByTagName(s)[0],
+                        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                            '//www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+                })(window, document, 'script', 'dataLayer', 'GTM-T3SX9C');</script>
+
+            <!-- End Google Tag Manager Central Tr Com by AdresGezgini -->
+            <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+            <script src="~/Content/Scripts/querystring-0.9.0-min.js"></script>
+            <script src="~/Content/Scripts/jquery.storageapi.min.js"></script>
+            <script src="~/Content/Scripts/Form.js"></script>
+            <script src="~/Content/Content/Themes/css/Bootstrap/js/bootstrap.min.js"></script>
+            <script src="~/Content/Scripts/jquery.lazy.js"></script>
+            <script src="~/Content/Scripts/Global.js"></script>
+            <script src="~/Content/Scripts/jquery.number.min.js"></script>
+            <script src="~/Content/Scripts/jquery.mask.min.js"></script>
+            <script src="~/Content/Scripts/buyukharf.js"></script>
+            <script src="~/Content/Scripts/page.js?v=3.1"></script>
+            <script src="~/Content/Scripts/jquery-ui.min.js"></script>
+            <script src="~/Content/Scripts/daterangepicker.tr.js"></script>
+            <script>
+                $(function () {
+                    $('[data-toggle="tooltip"]').tooltip()
+                })
+
+            </script>
+            <script src="Scripts\maskeleme.min.js"></script>
+
+
+            <!-- Include cookiealert script -->
+            <script src="~Content/Scripts\cookiealert.js"></script>
+

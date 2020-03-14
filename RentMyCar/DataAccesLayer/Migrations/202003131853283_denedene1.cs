@@ -3,7 +3,7 @@
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class deneme : DbMigration
+    public partial class denedene1 : DbMigration
     {
         public override void Up()
         {
@@ -22,6 +22,7 @@
                 c => new
                     {
                         Id = c.Int(nullable: false, identity: true),
+                        ArabaAdi = c.String(nullable: false),
                         ImageUrl = c.String(),
                         Yıl = c.String(nullable: false),
                         Plaka = c.String(nullable: false),
@@ -36,6 +37,7 @@
                         BagajLitre = c.Int(nullable: false),
                         SürücüYas = c.Int(nullable: false),
                         YolcuSayisi = c.Int(nullable: false),
+                        Depozito = c.Int(nullable: false),
                         RezervasyonID = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.Id)

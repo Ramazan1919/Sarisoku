@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BusınessLayer.Concrete;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,16 +9,19 @@ namespace RentACar.Controllers
 {
     public class HomeController : Controller
     {
+
+        CarManager carManager = new CarManager();
         public ActionResult Index()
         {
             return View();
         }
 
-        public ActionResult About()
+        public ActionResult ListOfCars()
         {
-            ViewBag.Message = "Your application description page.";
 
-            return View();
+            var model = carManager.List();
+
+            return View(model);
         }
 
         public ActionResult Contact()

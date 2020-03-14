@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.0\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.0\build\EntityFramework.props')" />
   <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -45,6 +46,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -120,23 +127,199 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\CarController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\RentalController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="bin\Antlr3.Runtime.dll" />
+    <Content Include="bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll" />
+    <Content Include="bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml" />
+    <Content Include="bin\Microsoft.Web.Infrastructure.dll" />
+    <Content Include="bin\Newtonsoft.Json.dll" />
+    <Content Include="bin\System.Web.Helpers.dll" />
+    <Content Include="bin\System.Web.Mvc.dll" />
+    <Content Include="bin\System.Web.Optimization.dll" />
+    <Content Include="bin\System.Web.Razor.dll" />
+    <Content Include="bin\System.Web.WebPages.Deployment.dll" />
+    <Content Include="bin\System.Web.WebPages.dll" />
+    <Content Include="bin\System.Web.WebPages.Razor.dll" />
+    <Content Include="bin\WebGrease.dll" />
+    <Content Include="Content\Admin\assets\js\BuyukHarf-v3.1.2.js" />
+    <Content Include="Content\Admin\Content\Photos\Cars\2822018102808-renault_symbol.png" />
+    <Content Include="Content\Admin\Content\Photos\Cars\2822018103223-clio_test.png" />
+    <Content Include="Content\Admin\Content\Photos\Cars\4122017115634-vw_yeni_polo.png" />
+    <Content Include="Content\Admin\Content\Photos\Cars\4122017120011-renault_megane.png" />
+    <Content Include="Content\Admin\Content\Photos\Cars\4122017120048-renault_captur.png" />
+    <Content Include="Content\Admin\Content\Photos\Cars\4122017120116-dacia_duster.png" />
+    <Content Include="Content\Admin\Content\Photos\Cars\4122017120123-vw_caravelle.png" />
+    <Content Include="Content\Admin\Content\Photos\Cars\4122017120130-audi_a6_qauttro.png" />
+    <Content Include="Content\Admin\Content\Photos\Cars\4122017120220-audi_a3_sedan.png" />
+    <Content Include="Content\Admin\Content\Photos\Cars\a4.png" />
+    <Content Include="Content\Admin\Content\Photos\Cars\bmw-318-benzin-otomatik.png" />
+    <Content Include="Content\Admin\Content\Photos\Cars\bmw-320.png" />
+    <Content Include="Content\Admin\Content\Photos\Cars\BMW-X1-Benzin-Otomatik.png" />
+    <Content Include="Content\Admin\Content\Photos\Cars\bmw16d.png" />
+    <Content Include="Content\Admin\Content\Photos\Cars\bmw5.png" />
+    <Content Include="Content\Admin\Content\Photos\Cars\citroen-c5-aircross-dizel-otomatik.png" />
+    <Content Include="Content\Admin\Content\Photos\Cars\cla.png" />
+    <Content Include="Content\Admin\Content\Photos\Cars\corsa.png" />
+    <Content Include="Content\Admin\Content\Photos\Cars\dacia-sandero-stepway.jpg" />
+    <Content Include="Content\Admin\Content\Photos\Cars\dacialodgy.png" />
+    <Content Include="Content\Admin\Content\Photos\Cars\egea.png" />
+    <Content Include="Content\Admin\Content\Photos\Cars\focus.png" />
+    <Content Include="Content\Admin\Content\Photos\Cars\Ford-Ecosport-Benzin-Otomatik-32423424.png" />
+    <Content Include="Content\Admin\Content\Photos\Cars\ford-kuga-dizel-otomatik.png" />
+    <Content Include="Content\Admin\Content\Photos\Cars\golf.png" />
+    <Content Include="Content\Admin\Content\Photos\Cars\leon.png" />
+    <Content Include="Content\Admin\Content\Photos\Cars\mercedes-benz-c-180-2018.png" />
+    <Content Include="Content\Admin\Content\Photos\Cars\Mercedes-GLA-200-Benzin-Benzin-Otomatik.png" />
+    <Content Include="Content\Admin\Content\Photos\Cars\mercedes_c200.png" />
+    <Content Include="Content\Admin\Content\Photos\Cars\opel-astra-benzin-otomatik.png" />
+    <Content Include="Content\Admin\Content\Photos\Cars\Opel-Crossland-X-Benzin-Otomatik-324234.png" />
+    <Content Include="Content\Admin\Content\Photos\Cars\passat.png" />
+    <Content Include="Content\Admin\Content\Photos\Cars\peugeot-3008-dizel-otomatik.png" />
+    <Content Include="Content\Admin\Content\Photos\Cars\Peugeot-301-Dizel-Manuel-3333.jpg" />
+    <Content Include="Content\Admin\Content\Photos\Cars\Renault-Megane-HB-Dizel-Otomatik-324234.png" />
+    <Content Include="Content\Admin\Content\Photos\Cars\renault_kadjar.jpg" />
+    <Content Include="Content\Admin\Content\Photos\Cars\seat_ibiza.png" />
+    <Content Include="Content\Admin\Content\Photos\Cars\skoda-kodiaq.jpg" />
+    <Content Include="Content\Admin\Content\Photos\Cars\skoda-octavia-dizel-otomatik.png" />
+    <Content Include="Content\Admin\Content\Photos\Cars\sporttourier.png" />
+    <Content Include="Content\Admin\Content\Photos\Cars\superb.png" />
+    <Content Include="Content\Admin\Content\Photos\Cars\tourneo.png" />
+    <Content Include="Content\Admin\Content\Photos\Cars\volkswagen-touareg.png" />
+    <Content Include="Content\Admin\Content\Photos\Cars\volkswagen-troc.png" />
+    <Content Include="Content\Admin\Content\Photos\Cars\volkswagen_2018_transporter.jpg" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Img\unnamed.png" />
+    <Content Include="Content\Scripts\buyukharf.js" />
+    <Content Include="Content\Scripts\cookiealert.css" />
+    <Content Include="Content\Scripts\cookiealert.js" />
+    <Content Include="Content\Scripts\daterangepicker.tr.js" />
+    <Content Include="Content\Scripts\fancybox\dist\jquery.fancybox.css" />
+    <Content Include="Content\Scripts\fancybox\dist\jquery.fancybox.js" />
+    <Content Include="Content\Scripts\fancybox\dist\jquery.fancybox.min.css" />
+    <Content Include="Content\Scripts\Form.js" />
+    <Content Include="Content\Scripts\Global.js" />
+    <Content Include="Content\Scripts\index-1.js" />
+    <Content Include="Content\Scripts\index.js" />
+    <Content Include="Content\Scripts\jquery-ui.min.js" />
+    <Content Include="Content\Scripts\jquery.easy-autocomplete.min.js" />
+    <Content Include="Content\Scripts\jquery.lazy.js" />
+    <Content Include="Content\Scripts\jquery.mask.min.js" />
+    <Content Include="Content\Scripts\jquery.number.min.js" />
+    <Content Include="Content\Scripts\jquery.storageapi.min.js" />
+    <Content Include="Content\Scripts\maskeleme.min.js" />
+    <Content Include="Content\Scripts\office_map_script.js" />
+    <Content Include="Content\Scripts\OwlCarousel2-2.2.1\dist\assets\owl.carousel.min.css" />
+    <Content Include="Content\Scripts\OwlCarousel2-2.2.1\dist\assets\owl.video.play.png" />
+    <Content Include="Content\Scripts\OwlCarousel2-2.2.1\dist\owl.carousel.min.js" />
+    <Content Include="Content\Scripts\page.js" />
+    <Content Include="Content\Scripts\querystring-0.9.0-min.js" />
+    <Content Include="Content\Themes\css\Bootstrap\css\bootstrap.min.css" />
+    <Content Include="Content\Themes\css\Bootstrap\js\bootstrap.min.js" />
+    <Content Include="Content\Themes\css\defaultStyle.css" />
+    <Content Include="Content\Themes\css\easy-autocomplete.min19ce.css" />
+    <Content Include="Content\Themes\css\easy-autocomplete.themes.css" />
+    <Content Include="Content\Themes\css\font-awesome.min.css" />
+    <Content Include="Content\Themes\css\font.css" />
+    <Content Include="Content\Themes\css\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\Themes\css\fonts\untitled-font-5.svg" />
+    <Content Include="Content\Themes\css\index.css" />
+    <Content Include="Content\Themes\css\jqueryui.css" />
+    <Content Include="Content\Themes\css\ozelDesktop.css" />
+    <Content Include="Content\Themes\css\ozelStyle.css" />
+    <Content Include="Content\Themes\css\page.min-1.css" />
+    <Content Include="Content\Themes\css\page.min-10.css" />
+    <Content Include="Content\Themes\css\page.min-11.css" />
+    <Content Include="Content\Themes\css\page.min-12.css" />
+    <Content Include="Content\Themes\css\page.min-13.css" />
+    <Content Include="Content\Themes\css\page.min-14.css" />
+    <Content Include="Content\Themes\css\page.min-15.css" />
+    <Content Include="Content\Themes\css\page.min-16.css" />
+    <Content Include="Content\Themes\css\page.min-17.css" />
+    <Content Include="Content\Themes\css\page.min-18.css" />
+    <Content Include="Content\Themes\css\page.min-19.css" />
+    <Content Include="Content\Themes\css\page.min-2.css" />
+    <Content Include="Content\Themes\css\page.min-20.css" />
+    <Content Include="Content\Themes\css\page.min-21.css" />
+    <Content Include="Content\Themes\css\page.min-22.css" />
+    <Content Include="Content\Themes\css\page.min-23.css" />
+    <Content Include="Content\Themes\css\page.min-24.css" />
+    <Content Include="Content\Themes\css\page.min-25.css" />
+    <Content Include="Content\Themes\css\page.min-26.css" />
+    <Content Include="Content\Themes\css\page.min-27.css" />
+    <Content Include="Content\Themes\css\page.min-28.css" />
+    <Content Include="Content\Themes\css\page.min-29.css" />
+    <Content Include="Content\Themes\css\page.min-3.css" />
+    <Content Include="Content\Themes\css\page.min-30.css" />
+    <Content Include="Content\Themes\css\page.min-31.css" />
+    <Content Include="Content\Themes\css\page.min-4.css" />
+    <Content Include="Content\Themes\css\page.min-5.css" />
+    <Content Include="Content\Themes\css\page.min-6.css" />
+    <Content Include="Content\Themes\css\page.min-7.css" />
+    <Content Include="Content\Themes\css\page.min-8.css" />
+    <Content Include="Content\Themes\css\page.min-9.css" />
+    <Content Include="Content\Themes\css\page.min.css" />
+    <Content Include="Content\Themes\images\accordion-plus.png" />
+    <Content Include="Content\Themes\images\arrow_down.png" />
+    <Content Include="Content\Themes\images\arrow_down2.png" />
+    <Content Include="Content\Themes\images\banner_agent.jpg" />
+    <Content Include="Content\Themes\images\blue_icon.png" />
+    <Content Include="Content\Themes\images\blue_icon_disable.jpg" />
+    <Content Include="Content\Themes\images\carthumbnail.jpg" />
+    <Content Include="Content\Themes\images\central_blog_bg.png" />
+    <Content Include="Content\Themes\images\central_logo.png" />
+    <Content Include="Content\Themes\images\Central_web_Ziraat_kampanya_slider_2.jpg" />
+    <Content Include="Content\Themes\images\check-icon.png" />
+    <Content Include="Content\Themes\images\close.png" />
+    <Content Include="Content\Themes\images\date_left_icon.png" />
+    <Content Include="Content\Themes\images\date_left_icon_hover.png" />
+    <Content Include="Content\Themes\images\date_right_icon.png" />
+    <Content Include="Content\Themes\images\date_right_icon_hover.png" />
+    <Content Include="Content\Themes\images\disc.png" />
+    <Content Include="Content\Themes\images\green_icon.png" />
+    <Content Include="Content\Themes\images\haritada_goster.png" />
+    <Content Include="Content\Themes\images\levent_image.jpg" />
+    <Content Include="Content\Themes\images\loading.svg" />
+    <Content Include="Content\Themes\images\price-order-icon.png" />
+    <Content Include="Content\Themes\images\select_pin.png" />
+    <Content Include="Content\Themes\images\sube_pin.png" />
+    <Content Include="Content\Themes\images\triangle.png" />
+    <Content Include="Content\Themes\images\uncompatible.jpg" />
+    <Content Include="Content\Themes\images\uye_giris_bg.jpg" />
+    <Content Include="Content\Themes\images\volkswagen_passat_2016.jpg" />
+    <Content Include="Content\Themes\images\yol_yardim_bg.jpg" />
+    <Content Include="Content\Themes\images\yol_yardim_icon.png" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Content\Themes\css\fonts\fontawesome-webfont-1.eot" />
+    <Content Include="Content\Themes\css\fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\Themes\css\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\Themes\css\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\Themes\css\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Content\Themes\css\fonts\untitled-font-5-1.eot" />
+    <Content Include="Content\Themes\css\fonts\untitled-font-5.eot" />
+    <Content Include="Content\Themes\css\fonts\untitled-font-5.ttf" />
+    <Content Include="Content\Themes\css\fonts\untitled-font-5.woff" />
+    <Content Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
+    <Content Include="obj\Debug\RentCar.WebSite.csproj.CoreCompileInputs.cache" />
+    <Content Include="obj\Debug\RentCar.WebSite.csprojAssemblyReference.cache" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -162,10 +345,19 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Car\Index.cshtml" />
+    <Content Include="Views\Shared\_PartialFooter.cshtml" />
+    <Content Include="Views\Shared\_PartialHeadr.cshtml" />
+    <Content Include="Views\Car\Create.cshtml" />
+    <Content Include="Views\Car\Details.cshtml" />
+    <Content Include="Views\Home\ListOfCars.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
+    <Folder Include="obj\Debug\TempPE\" />
+    <Folder Include="Views\Admin\" />
+    <Folder Include="Views\Rental\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -179,6 +371,16 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BusınessLayer\BusınessLayer.csproj">
+      <Project>{b56acfd6-53fe-41e4-a052-690728362574}</Project>
+      <Name>BusınessLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DataEntity\DataEntity.csproj">
+      <Project>{db3ac28d-119f-4b47-a3f1-32af6d641dc2}</Project>
+      <Name>DataEntity</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -213,7 +415,10 @@
       <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.0\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.0\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.0\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.0\build\EntityFramework.targets'))" />
   </Target>
+  <Import Project="..\packages\EntityFramework.6.4.0\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.0\build\EntityFramework.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

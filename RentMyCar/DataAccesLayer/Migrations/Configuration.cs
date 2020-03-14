@@ -11,7 +11,7 @@
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
         }
 
         protected override void Seed(RentACarContext context)
@@ -68,6 +68,8 @@
                 YakitTipi="Dizel",
                 YolcuSayisi=5,
                 Yıl="2005",
+                Depozito=500,
+                ArabaAdi="Megan HB",
 
             };
 

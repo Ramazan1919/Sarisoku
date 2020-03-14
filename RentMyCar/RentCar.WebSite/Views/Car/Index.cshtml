@@ -32,6 +32,24 @@
         <th>
             @Html.DisplayNameFor(model => model.IsActive)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BagajLitre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Depozito)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GunlukUcret)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.KampanyaOranı)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SürücüYas)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.YolcuSayisi)
+        </th>
         <th></th>
     </tr>
 
@@ -58,10 +76,31 @@
         <td>
             @Html.DisplayFor(modelItem => item.IsActive)
         </td>
+
         <td>
-            @Html.ActionLink("Düzenle", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Detayla", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Sil", "Delete", new { /* id=item.PrimaryKey */ })
+            @Html.DisplayFor(modelItem => item.BagajLitre)
+        </td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.Depozito)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GunlukUcret)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.KampanyaOranı)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SürücüYas)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.YolcuSayisi)
+        </td>
+
+        <td>
+            @Html.ActionLink("Düzenle", "Edit", new {  id= item.Id }) |
+            @Html.ActionLink("Detayla", "Details", new {  id=item.Id }) |
+            @Html.ActionLink("Sil", "Delete", new {  id= item.Id })
         </td>
     </tr>
 }

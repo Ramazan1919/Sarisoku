@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,8 +12,11 @@ namespace DataEntity
     {
 
 
-        [Key]
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
+
+        [Required]
+        public string ArabaAdi { get; set; }
 
         public string  ImageUrl { get; set; }
 
@@ -26,7 +30,7 @@ namespace DataEntity
         public string YakitTipi { get; set; }
         [Required]
         public int GunlukUcret { get; set; }
-        [Required]
+      
         public int ToplamKiralanmaSayisi { get; set; }
 
         [Required]
@@ -35,7 +39,6 @@ namespace DataEntity
         public int GuncelFiyat  {
 
             get { return GunlukUcret - ((GunlukUcret * KampanyaOranı) / 100); }
-
                 }
         [Required]
         public string VitesTürü { get; set; }
@@ -52,6 +55,9 @@ namespace DataEntity
         public int YolcuSayisi { get; set; }
 
         public int Depozito { get; set; }
+
+
+      
         public int RezervasyonID { get; set; }
 
         public Rezervasyon Rezervasyon { get; set; }
