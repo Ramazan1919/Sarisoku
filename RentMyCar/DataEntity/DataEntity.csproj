@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Enums.cs" />
+    <Compile Include="LookupItem.cs" />
     <Compile Include="RentUser.cs" />
     <Compile Include="Admin.cs" />
     <Compile Include="Car.cs" />

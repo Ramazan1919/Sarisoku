@@ -1,4 +1,6 @@
 ﻿@using BusınessLayer.Util;
+@using BusınessLayer.Concrete;
+
 @model List<DataEntity.Rezervasyon>
 @{
     ViewBag.Title = "Rezervasyon Listesi";
@@ -38,8 +40,12 @@
             </td>
             <td>@reservation.AlisTarihi.ToString("dd.MM.yyyy HH:mm")</td>
             <td>@reservation.IadeTarihi.ToString("dd.MM.yyyy HH:mm")</td>
-            <td>@reservation.AlisveIadeyeri</td>
-            <td>@reservation.GetStatusText()</td>
+            <td>
+                @LookupManager.GetLookupName(DataEntity.LookupType.Locations, reservation.AlisYeri)
+                =>
+                @LookupManager.GetLookupName(DataEntity.LookupType.Locations, reservation.İadeYeri)
+            </td>
+            <td>@LookupManager.GetLookupName(DataEntity.LookupType.ReservationStatus, (int)reservation.Status)</td>
             <td><a class="mb10 btn btn-success" href="@Url.RouteUrl("ReservationDetail", new { id= reservation.Id})">Düzenle</a></td>
         </tr>
     }
