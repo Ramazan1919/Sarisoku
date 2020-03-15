@@ -19,6 +19,11 @@ namespace BusınessLayer.Abstract
             return repo.Delete(obj);
         }
 
+        public T Find(Expression<Func<T, bool>> where)
+        {
+            return repo.Find(where);
+        }
+
         public T GetById(int id)
         {
             return repo.GetById(id);

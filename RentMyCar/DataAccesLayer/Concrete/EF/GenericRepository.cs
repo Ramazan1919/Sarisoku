@@ -30,6 +30,11 @@ namespace DataAccessLayer.Concrete.EF
             return Save();
         }
 
+        public T Find(Expression<Func<T, bool>> where)
+        {
+            return _objectSet.FirstOrDefault(where);
+        }
+
         public T GetById(int id)
         {
             return _objectSet.Find(id);

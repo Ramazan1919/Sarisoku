@@ -10,7 +10,7 @@ namespace DataAccessLayer.Abstract
   public interface IRepository<T>
     {
         T GetById(int id);
-
+        T Find(Expression<Func<T, bool>> where);
         List<T> List();
         IQueryable<T> ListQueryable();
         List<T> List(Expression<Func<T, bool>> where);

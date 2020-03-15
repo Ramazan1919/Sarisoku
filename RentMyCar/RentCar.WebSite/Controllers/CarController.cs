@@ -8,6 +8,9 @@ using System.Web.Mvc;
 
 namespace RentACar.Controllers
 {
+
+
+    [Authorize]
     public class CarController : Controller
     {
         CarManager carManager = new CarManager();

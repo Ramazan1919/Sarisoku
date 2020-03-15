@@ -127,6 +127,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\CarController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
@@ -480,10 +481,10 @@
     <Content Include="Views\Reservation\Index.cshtml" />
     <Content Include="Views\Reservation\Detail.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
+    <Content Include="Views\Admin\AdminOperation.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="obj\Debug\TempPE\" />
-    <Folder Include="Views\Admin\" />
     <Folder Include="Views\Rental\" />
   </ItemGroup>
   <ItemGroup>

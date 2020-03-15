@@ -43,6 +43,7 @@
                 Id = 1,
                 Name = "Osman",
                 PhoneNumber = "05423311086"
+                
             };
             context.RentUsers.Add(rentUser);
             context.SaveChanges();
@@ -64,6 +65,7 @@
                 Yıl = "2005",
                 Depozito = 500,
                 ArabaAdi = "Megan HB",
+                
             };
             context.Cars.Add(cars);
             context.SaveChanges();
@@ -79,6 +81,9 @@
                 İadeYeri=2,
                 IadeTarihi = DateTime.Now,
                 Status =  ReservationsStatus.Active
+
+                
+
             };
             context.Rezervasyons.Add(rezervasyon);
             context.SaveChanges();

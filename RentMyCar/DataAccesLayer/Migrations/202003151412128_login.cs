@@ -3,7 +3,7 @@
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class createtables : DbMigration
+    public partial class login : DbMigration
     {
         public override void Up()
         {
@@ -59,14 +59,24 @@
                         RentUserID = c.Int(nullable: false),
                         AlisTarihi = c.DateTime(nullable: false),
                         IadeTarihi = c.DateTime(nullable: false),
-                        AlisveIadeyeri = c.String(nullable: false),
+                        AlisYeri = c.Int(nullable: false),
+                        İadeYeri = c.Int(nullable: false),
+                        Status = c.Int(nullable: false),
                     })
-                .PrimaryKey(t => t.Id);
+                .PrimaryKey(t => t.Id)
+                .ForeignKey("dbo.Cars", t => t.CarID, cascadeDelete: true)
+                .ForeignKey("dbo.RentUsers", t => t.RentUserID, cascadeDelete: true)
+                .Index(t => t.CarID)
+                .Index(t => t.RentUserID);
             
         }
         
         public override void Down()
         {
+            DropForeignKey("dbo.Rezervasyons", "RentUserID", "dbo.RentUsers");
+            DropForeignKey("dbo.Rezervasyons", "CarID", "dbo.Cars");
+            DropIndex("dbo.Rezervasyons", new[] { "RentUserID" });
+            DropIndex("dbo.Rezervasyons", new[] { "CarID" });
             DropTable("dbo.Rezervasyons");
             DropTable("dbo.RentUsers");
             DropTable("dbo.Cars");
