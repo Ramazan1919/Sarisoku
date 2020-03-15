@@ -67,6 +67,10 @@
     <Compile Include="Migrations\202003141527029_reservation_status2.designer.cs">
       <DependentUpon>202003141527029_reservation_status2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202003151024303_Reservation_AlisIadeYeri.cs" />
+    <Compile Include="Migrations\202003151024303_Reservation_AlisIadeYeri.designer.cs">
+      <DependentUpon>202003151024303_Reservation_AlisIadeYeri.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -89,6 +93,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202003141527029_reservation_status2.resx">
       <DependentUpon>202003141527029_reservation_status2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003151024303_Reservation_AlisIadeYeri.resx">
+      <DependentUpon>202003151024303_Reservation_AlisIadeYeri.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

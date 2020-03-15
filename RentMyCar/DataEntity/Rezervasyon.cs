@@ -24,7 +24,10 @@ namespace DataEntity
         public DateTime IadeTarihi { get; set; }
 
         [Required]
-        public string AlisveIadeyeri { get; set; }
+        public int AlisYeri { get; set; }
+
+        [Required]
+        public int İadeYeri { get; set; }
 
         public ReservationsStatus Status { get; set; }
 

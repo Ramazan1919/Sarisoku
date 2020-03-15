@@ -75,7 +75,8 @@
                 CarID = 1,
                 RentUserID = 1,
                 AlisTarihi = DateTime.Now,
-                AlisveIadeyeri = "Çorum",
+                AlisYeri = 1,
+                İadeYeri=2,
                 IadeTarihi = DateTime.Now,
                 Status =  ReservationsStatus.Active
             };

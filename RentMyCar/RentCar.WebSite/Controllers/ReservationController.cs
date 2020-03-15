@@ -1,4 +1,6 @@
 ﻿using BusınessLayer.Concrete;
+using DataEntity;
+using RentCar.WebSite.Models;
 using System.Web.Mvc;
 
 namespace RentCar.WebSite.Controllers
@@ -20,7 +22,12 @@ namespace RentCar.WebSite.Controllers
 
         public ActionResult Detail(int id)
         {
-            var model = _reservationManager.GetReservationDetail(id);
+            var model = new ReservationDetailModel()
+            {
+                Reservation = _reservationManager.GetReservationDetail(id),
+                Locations = LookupManager.GetLookups(LookupType.Locations),
+                ReservationStatuses = LookupManager.GetLookups(LookupType.ReservationStatus)
+            };
             return View(model);
         }
     }
