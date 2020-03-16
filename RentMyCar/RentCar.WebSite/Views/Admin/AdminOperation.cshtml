@@ -1,8 +1,13 @@
-﻿
+﻿@using RentCar.WebSite.Models
+@using DataEntity
 @{
     Layout = null;
 }
 
+@{ 
+    Admin adm = SessionModel.CurrentUser;
+
+}
 <!DOCTYPE html>
 
 <html>
@@ -15,44 +20,52 @@
     <script src="~/Content/Login/vendor/jquery/jquery-3.2.1.min.js"></script>
     <script src="~/Content/Login/vendor/bootstrap/js/bootstrap.min.js"></script>
 </head>
-<body>
-    <div>
-        <h3> Admin Panel İşlemler </h3>
+<body style="background-color:dimgrey">
+    <div class="row">
 
-        <div>
+        <div class="col-md-8 col-sm-8 col-lg-8 col-md-offset-2 col-lg-offset-2 col-sm-offset-2 " style="margin-top:150px; background-image:url(../../Content/Login/images/bg-01.jpg);">
 
-          
-            @Html.ActionLink("Çıkış","Logout","Login",new { @class="btn btn-danger"})
 
+            <div>
+
+                <h3> Admin Panel İşlemler <span class="pull-right">@adm.UserName</span><br /><br />  <a href="/Login/Logout" class="btn btn-danger pull-right"> ÇIKIŞ</a></h3>
+                <h5> </h5>
+                <table class="table">
+                    <thead class="thead-dark">
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Araba İşlemleri</th>
+                            <th scope="col">Rezervasyon İşlemleri</th>
+
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>  <a href="/Car/Index" class="btn btn-primary"> Araba Listesi</a></td>
+                            <td><a href="/Reservation/Index" class="btn btn-primary">Rezzervasyon İşlemleri</a></td>
+
+                        </tr>
+                        <tr>
+                            <th scope="row">2</th>
+                            <td>Jacob</td>
+                            <td>Thornton</td>
+
+                        </tr>
+
+                    </tbody>
+                </table>
+
+
+
+            </div>
         </div>
-        <table class="table">
-            <thead class="thead-dark">
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Araba İşlemleri</th>
-                    <th scope="col">Rezervasyon İşlemleri</th>
-
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>@Html.ActionLink("Araba Listesi","Index","Car", new { @class = "btn btn-primary" })</td>
-
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-
-                </tr>
-
-            </tbody>
-        </table>
-
-
-
     </div>
+
+    
 </body>
 </html>
+
+
+   
 

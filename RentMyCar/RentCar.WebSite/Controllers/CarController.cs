@@ -1,5 +1,6 @@
 ﻿using BusınessLayer.Concrete;
 using DataEntity;
+using RentCar.WebSite.Filter;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +11,7 @@ namespace RentACar.Controllers
 {
 
 
-    [Authorize]
+    [Auth]
     public class CarController : Controller
     {
         CarManager carManager = new CarManager();

@@ -1,5 +1,6 @@
 ﻿using BusınessLayer.Concrete;
 using DataEntity;
+using RentCar.WebSite.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,28 +29,31 @@ namespace RentCar.WebSite.Controllers
             {
                 var model = adminManager.List(x => x.UserName == admin.UserName && x.Password == admin.Password).FirstOrDefault();
 
+                if (model != null)
+                {
+                    SessionModel.Set<Admin>("login", admin);
 
-                FormsAuthentication.SetAuthCookie(model.UserName, false);
 
+                    return RedirectToAction("AdminOperation", "Admin");
 
-                return RedirectToAction("AdminOperation", "Admin");
-            }
-            else
-            {
+                }
+
                 ViewBag.Mesaj = "Geçersiz Kullanıcı adı veya Şifre";
 
-                return View(admin);
-
+             
             }
 
-            
+
+            return View(admin);
         }
 
 
         public ActionResult Logout()
         {
 
-            FormsAuthentication.SignOut();
+            Session.Clear();
+
+           
 
             return RedirectToAction("Index", "Home");
         }
