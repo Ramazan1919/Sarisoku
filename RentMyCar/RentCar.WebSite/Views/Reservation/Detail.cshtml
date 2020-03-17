@@ -10,60 +10,75 @@
 
 @if (Model != null && Model.Reservation != null)
 {
-    <form method="post" action="Detail" class="form-horizontal">
-        @Html.HiddenFor(x => x.Reservation.Id)
-        <div class="form-group">
-            <label class="col-md-2">Alış Tarihi</label>
-            <div class="col-md-4">
-                @Html.TextBoxFor(x => x.Reservation.AlisTarihi, new { @class = "form-control", maxlength = 20 })
-            </div>
+<form method="post" class="form-horizontal">
+    @Html.HiddenFor(x => x.Reservation.Id)
+    <div class="form-group">
+        <label class="col-md-2">Araç Seçimi</label>
+        <div class="col-md-4">
+            @Html.DropDownListFor(x => x.Reservation.CarID, Model.CarList.ToItems(Model.Reservation.CarID), new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Reservation.CarID)
         </div>
+    </div>
 
-        <div class="form-group">
-            <label class="col-md-2">İade Tarihi</label>
-            <div class="col-md-4">
-                @Html.TextBoxFor(x => x.Reservation.IadeTarihi, new { @class = "form-control", maxlength = 20 })
-            </div>
+    <div class="form-group">
+        <label class="col-md-2">Alış Tarihi</label>
+        <div class="col-md-4">
+            @Html.TextBoxFor(x => x.Reservation.AlisTarihi, new { @class = "form-control", maxlength = 20 })
         </div>
+    </div>
 
-        <div class="form-group">
-            <label class="col-md-2">Alış Yeri</label>
-            <div class="col-md-4">
-                @Html.DropDownListFor(x => x.Reservation.AlisYeri, Model.Locations.ToItems(Model.Reservation.AlisYeri), new { @class = "form-control" })
-            </div>
+    <div class="form-group">
+        <label class="col-md-2">İade Tarihi</label>
+        <div class="col-md-4">
+            @Html.TextBoxFor(x => x.Reservation.IadeTarihi, new { @class = "form-control", maxlength = 20 })
         </div>
+    </div>
 
-        <div class="form-group">
-            <label class="col-md-2">İade Yeri</label>
-            <div class="col-md-4">
-                @Html.DropDownListFor(x => x.Reservation.İadeYeri, Model.Locations.ToItems(Model.Reservation.İadeYeri), new { @class = "form-control" })
-            </div>
+    <div class="form-group">
+        <label class="col-md-2">Alış Yeri</label>
+        <div class="col-md-4">
+            @Html.DropDownListFor(x => x.Reservation.AlisYeri, Model.Locations.ToItems(Model.Reservation.AlisYeri), new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Reservation.AlisYeri)
         </div>
+    </div>
 
-        <div class="form-group">
-            <label class="col-md-2">Rezervasyon Durumu</label>
-            <div class="col-md-4">
-                @Html.DropDownListFor(x => x.Reservation.Status, Model.ReservationStatuses.ToItems((int)Model.Reservation.Status, false), new { @class = "form-control" })
-            </div>
+    <div class="form-group">
+        <label class="col-md-2">İade Yeri</label>
+        <div class="col-md-4">
+            @Html.DropDownListFor(x => x.Reservation.İadeYeri, Model.Locations.ToItems(Model.Reservation.İadeYeri), new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Reservation.İadeYeri)
         </div>
-        <div class="form-group">
-            <label class="col-md-2">&nbsp;</label>
-            <div class="col-md-4">
-                @if (Model.Reservation.Id > 0 && Model.Reservation.Status != DataEntity.ReservationsStatus.Cancelled)
-                {
-                    <button type="submit" class="btn btn-danger">İptal Et</button>
-                }
-                else if (Model.Reservation.Id > 0)
-                {
-                    <button type="submit" class="btn btn-primary">Aktifleştir</button>
-                }
-                <button type="submit" class="btn btn-success">Kaydet</button>
-            </div>
+    </div>
+
+    <div class="form-group">
+        <label class="col-md-2">Rezervasyon Durumu</label>
+        <div class="col-md-4">
+            @Html.DropDownListFor(x => x.Reservation.Status, Model.ReservationStatuses.ToItems((int)Model.Reservation.Status, false), new { @class = "form-control" })
         </div>
-    </form>
+    </div>
+    <div class="form-group">
+        <label class="col-md-2">&nbsp;</label>
+        <div class="col-md-4">
+            @if (Model.Reservation.Id > 0 && Model.Reservation.Status != DataEntity.ReservationsStatus.Cancelled)
+            {
+                <button type="submit" class="btn btn-danger">İptal Et</button>
+            }
+            else if (Model.Reservation.Id > 0)
+            {
+                <button type="submit" class="btn btn-primary">Aktifleştir</button>
+            }
+            <button type="submit" class="btn btn-success">Kaydet</button>
+        </div>
+    </div>
+</form>
 }
 else
 {
     <p class="alert alert-danger">Görüntülemeye çalıştığınız rezervasyon bulunamadı!</p>
 }
+
+<style>
+    body{max-width:1120px;margin:0 auto;}
+    .field-validation-error{color:#ff0000;margin-top:5px;display:block;}
+</style>
 
