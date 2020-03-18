@@ -7,10 +7,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace RentACar.Controllers
+namespace RentCar.WebSite.Controllers
 {
-
-
     [Auth]
     public class CarController : Controller
     {
@@ -26,8 +24,8 @@ namespace RentACar.Controllers
         // GET: Car/Details/5
         public ActionResult Details(int id)
         {
-            var model =carManager.GetById(id);
-            
+            var model = carManager.GetById(id);
+
             return View(model);
         }
 
@@ -52,6 +50,7 @@ namespace RentACar.Controllers
                     string filename = $"user_{model.Id}.{ProfileImage.ContentType.Split('/')[1]}";
                     ProfileImage.SaveAs(Server.MapPath($"~/Content/Admin/Content/Photos/Cars/{filename}"));
                     model.ImageUrl = filename;
+                    carManager.Save();
                 }
                 return RedirectToAction("Index", "Car");
             }
@@ -59,7 +58,7 @@ namespace RentACar.Controllers
             {
                 return View(model);
             }
-         }
+        }
 
         // GET: Car/Edit/5
         public ActionResult Edit(int id)

@@ -12,116 +12,124 @@
 
         <article>
 
+            @if (ViewBag.Nocar != null)
+            {
 
+                <h1> @ViewBag.Nocar </h1>
+            }
+            else
+            {
 
-            <div class="result">
-                <div class="tree">
-                    <div class="container-fluid">
+                <div class="result">
+                    <div class="tree">
+                        <div class="container-fluid">
 
-                        <ul>
-                            <li>
-                                <span>Alış ve Teslim Yeri</span><h2> </h2>
-                               
-                            </li>
-                            <li>
-                                <span>Alış ve Teslim Saati</span><h2>14 Mar, 15:15 - 21 Mar, 15:15</h2>
-                               
-                            </li>
-                            <li class="active"><span>Araç Modeli</span><h2>Araç Modelini Seçin</h2></li>
-                            <li><span>İlave Ekipman</span><h2>İlave Ekipman İçin İletişime Geçin</h2></li>
-                        </ul>
+                            <ul>
+                                <li>
+                                    <span>Alış ve Teslim Yeri</span><h2> </h2>
 
+                                </li>
+                                <li>
+                                    <span>Alış ve Teslim Saati</span><h2>14 Mar, 15:15 - 21 Mar, 15:15</h2>
+
+                                </li>
+                                <li class="active"><span>Araç Modeli</span><h2>Araç Modelini Seçin</h2></li>
+                                <li><span>İlave Ekipman</span><h2>İlave Ekipman İçin İletişime Geçin</h2></li>
+                            </ul>
+
+                        </div>
                     </div>
-                </div>
-                <br />
+                    <br />
 
-                @foreach (var cars in Model)
-                {
+                    @foreach (var cars in Model)
+                    {
 
-                    <div class="box">
+                        <div class="box">
 
-                        <div class="left">
+                            <div class="left">
 
-                            <div class="content">
+                                <div class="content">
 
-                                <div class="contentLeft">
+                                    <div class="contentLeft">
 
-                                    <h4>@cars.ArabaAdi   </h4>
+                                        <h4>@cars.ArabaAdi   </h4>
 
-                                    <h5> veya benzeri @cars.YakitTipi   @cars.VitesTürü</h5>
+                                        <h5> veya benzeri @cars.YakitTipi   @cars.VitesTürü</h5>
 
-                                    <figure>
+                                        <figure>
 
-                                        <img src="~/Content/Admin/Content/Photos/Cars/@cars.ImageUrl" class="img-responsive" alt="273">
+                                            <img src="~/Content/Admin/Content/Photos/Cars/@cars.ImageUrl" class="img-responsive" alt="273">
 
-                                    </figure>
+                                        </figure>
 
-                                </div>
+                                    </div>
 
-                                <div class="contentRight">
+                                    <div class="contentRight">
 
-                                    <ul>
+                                        <ul>
 
-                                        <li>
-                                            <i class="icon-central-fuel" aria-hidden="true"> </i>
-                                            @cars.YakitTipi
-                                        </li>
+                                            <li>
+                                                <i class="icon-central-fuel" aria-hidden="true"> </i>
+                                                @cars.YakitTipi
+                                            </li>
 
-                                        <li>
-                                            <i class="icon-central-transmission" aria-hidden="true"></i>
-                                            @cars.VitesTürü
-                                        </li>
+                                            <li>
+                                                <i class="icon-central-transmission" aria-hidden="true"></i>
+                                                @cars.VitesTürü
+                                            </li>
 
-                                        <li class="tooltips">
+                                            <li class="tooltips">
 
-                                            <i class="icon-central-card" aria-hidden="true"></i>
+                                                <i class="icon-central-card" aria-hidden="true"></i>
 
-                                            + @cars.EhliyetYas
-                                            <span>Sürücü Belgesi @cars.EhliyetYas Yıl ve Daha Uzun Süreli</span>
+                                                + @cars.EhliyetYas
+                                                <span>Sürücü Belgesi @cars.EhliyetYas Yıl ve Daha Uzun Süreli</span>
 
-                                        </li>
+                                            </li>
 
-                                        <li class="tooltips">
+                                            <li class="tooltips">
 
-                                            <i class="icon-central-user" aria-hidden="true"></i>
+                                                <i class="icon-central-user" aria-hidden="true"></i>
 
-                                            + @cars.SürücüYas
-                                            <span>@cars.SürücüYas Yaş ve Üzeri</span>
+                                                + @cars.SürücüYas
+                                                <span>@cars.SürücüYas Yaş ve Üzeri</span>
 
-                                        </li>
+                                            </li>
 
-                                    </ul>
+                                        </ul>
 
-                                    <p>Depozito Tutarı: <label>@cars.Depozito ₺</label></p>
+                                        <p>Depozito Tutarı: <label>@cars.Depozito ₺</label></p>
+
+                                    </div>
 
                                 </div>
 
                             </div>
 
+                            <div class="right price-buttons">
+
+                                <span class="reservation-text">Rezervasyon ekranına gitmek için aşağıdaki butonu kullanabilirsiniz.</span>
+
+                                <button onclick="window.location.href='/'" class="buyNow">
+
+
+                                    Toplam:   @cars.GunlukUcret TL
+                                    <br />
+                                    Rezervasyon Yap
+
+                                </button>
+
+                            </div>
+
                         </div>
-
-                        <div class="right price-buttons">
-
-                            <span class="reservation-text">Rezervasyon ekranına gitmek için aşağıdaki butonu kullanabilirsiniz.</span>
-
-                            <button onclick="window.location.href='/'" class="buyNow">
-
-                                
-                                 Toplam:   @cars.GunlukUcret TL
-                                <br />
-                                Rezervasyon Yap
-
-                            </button>
-
-                        </div>
-
-                    </div>
-                }
+                    }
 
 
-            </div>
-                
-         </article>
+                </div>
+            }
+
+
+        </article>
 
      </section>
 
