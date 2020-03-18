@@ -11,6 +11,7 @@ namespace DataEntity
 
         public int AdminID { get; set; }
 
+        [Required(ErrorMessage = "Araç seçmediniz!")]
         public int CarID { get; set; }
 
         public int RentUserID { get; set; }
@@ -23,10 +24,10 @@ namespace DataEntity
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime IadeTarihi { get; set; }
 
-        [Required]
+        [Required(ErrorMessage ="Alış yeri seçmediniz!")]
         public int AlisYeri { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "İade yeri seçmediniz!")]
         public int İadeYeri { get; set; }
 
         public ReservationsStatus Status { get; set; }
