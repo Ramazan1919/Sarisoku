@@ -78,7 +78,6 @@
                 RentUserID = 1,
                 AlisTarihi = DateTime.Now,
                 AlisYeri = 1,
-                İadeYeri=2,
                 IadeTarihi = DateTime.Now,
                 Status =  ReservationsStatus.Active
 

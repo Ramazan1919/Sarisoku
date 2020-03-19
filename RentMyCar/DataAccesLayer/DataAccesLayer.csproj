@@ -59,6 +59,10 @@
     <Compile Include="Migrations\202003151412128_login.designer.cs">
       <DependentUpon>202003151412128_login.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202003191354228_Edit_Delete.cs" />
+    <Compile Include="Migrations\202003191354228_Edit_Delete.designer.cs">
+      <DependentUpon>202003191354228_Edit_Delete.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -75,6 +79,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202003151412128_login.resx">
       <DependentUpon>202003151412128_login.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003191354228_Edit_Delete.resx">
+      <DependentUpon>202003191354228_Edit_Delete.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
