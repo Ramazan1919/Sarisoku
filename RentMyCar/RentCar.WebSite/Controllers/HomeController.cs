@@ -1,5 +1,6 @@
 ﻿using BusınessLayer.Concrete;
 using DataEntity;
+using RentCar.WebSite.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,7 +29,7 @@ namespace RentACar.Controllers
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+           
 
             return View();
         }
@@ -36,14 +37,14 @@ namespace RentACar.Controllers
 
 
 
-        public ActionResult SearchCar(Rezervasyon model)
+        public ActionResult SearchCar(SearchModel model)
         {
             if (ModelState.IsValid)
             {
-                var carlist = carManager.List(x=>x.IsActive);
+                var carlist = carManager.List(x=>x.IsActive );
 
-                var reservationList = rezervationManager.List(x => x.Status == ReservationsStatus.Active && ((x.AlisTarihi < model.AlisTarihi && x.IadeTarihi > model.AlisTarihi)
-                                        || (x.AlisTarihi > model.AlisTarihi && x.AlisTarihi >= model.IadeTarihi)));
+                var reservationList = rezervationManager.List(x => x.Status == ReservationsStatus.Active    && ((x.AlisTarihi < model.Rezervasyon.AlisTarihi && x.IadeTarihi > model.Rezervasyon.AlisTarihi)
+                                        || (x.AlisTarihi > model.Rezervasyon.AlisTarihi && x.AlisTarihi >= model.Rezervasyon.IadeTarihi)));
 
                 //Şuana kadar elimizde aktif araç listesi ve verilen tarihlerde yapılmış rezervasyonlar var
                 //Araçları alış yeri / İade yerine göre filtreleyeceksen bunu rezervasyon üzerinden değil ara. üzerinden yapman lazım
@@ -63,8 +64,7 @@ namespace RentACar.Controllers
                 //Bu arada araçları sadece biniş yerine göre filtrelemeyebiliriz, iade yerine göre filtrelemenin mantığı yok
                 //Ben aracı çorumdan aldım, site sahibinin bana seçtirdiği istediğim lokasyona bırakabiliriz bunda bi kısıt yok
 
-                //var list = rezervationManager.List(x => x.AlisTarihi <= model.AlisTarihi && x.IadeTarihi >= model.IadeTarihi).Where(
-                //    x => x.AlisYeri == model.AlisYeri && x.İadeYeri == model.İadeYeri);
+             
 
 
                 //CarID ye göre de filtremelenin bir mantığı yok, eğer araç için filtrleme yapacaksan markasına (Hyundai, Renault), 
@@ -73,15 +73,6 @@ namespace RentACar.Controllers
 
                 //benim sana ilk ipucum "Rezervasyon model" yerine bir search model oluşturman!! 
                 //Şimdilik aşağıdaki kısımları commentledim sen düşün beraber konuşalım sonra
-
-                //var rezerv = carlist.Where(c => c.Id == model.CarID).ToList();
-                //var norezerv = carlist.Where(c => c.Id != model.CarID).ToList();
-
-                //if (norezerv == null)
-                //{
-                //    ViewBag.Nocar = "Belitilen aralıklarda uygun araba bulunamadı.Tekrar Deneyin..";
-                //}
-                //return View("ListOfCars", norezerv);
             }
 
             ViewBag.Nocar = "Belitilen aralıklarda uygun araba bulunamadı.Tekrar Deneyin..";

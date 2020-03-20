@@ -27,6 +27,8 @@ namespace DataEntity
         [Required(ErrorMessage ="Alış yeri seçmediniz!")]
         public int AlisYeri { get; set; }
 
+        [Required(ErrorMessage = "Alış yeri seçmediniz!")]
+        public int İadeYeri { get; set; }
 
         public ReservationsStatus Status { get; set; }
 

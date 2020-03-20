@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace DataEntity
@@ -55,5 +57,7 @@ namespace DataEntity
         public int YolcuSayisi { get; set; }
 
         public decimal Depozito { get; set; }
+
+      
     }
 }

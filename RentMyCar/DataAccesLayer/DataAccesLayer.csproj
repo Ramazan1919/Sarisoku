@@ -63,6 +63,18 @@
     <Compile Include="Migrations\202003191354228_Edit_Delete.designer.cs">
       <DependentUpon>202003191354228_Edit_Delete.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202003191831466_iadeYeri.cs" />
+    <Compile Include="Migrations\202003191831466_iadeYeri.designer.cs">
+      <DependentUpon>202003191831466_iadeYeri.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202003200742188_denem.cs" />
+    <Compile Include="Migrations\202003200742188_denem.designer.cs">
+      <DependentUpon>202003200742188_denem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202003201550132_backoff.cs" />
+    <Compile Include="Migrations\202003201550132_backoff.designer.cs">
+      <DependentUpon>202003201550132_backoff.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -82,6 +94,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202003191354228_Edit_Delete.resx">
       <DependentUpon>202003191354228_Edit_Delete.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003191831466_iadeYeri.resx">
+      <DependentUpon>202003191831466_iadeYeri.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003200742188_denem.resx">
+      <DependentUpon>202003200742188_denem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003201550132_backoff.resx">
+      <DependentUpon>202003201550132_backoff.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -2,6 +2,7 @@
 {
     using DataAccessLayer.Concrete.EF;
     using DataEntity;
+
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
@@ -48,6 +49,9 @@
             context.RentUsers.Add(rentUser);
             context.SaveChanges();
 
+
+
+
             Car cars = new Car()
             {
                 Id = 1,
@@ -65,6 +69,7 @@
                 Yıl = "2005",
                 Depozito = 500,
                 ArabaAdi = "Megan HB",
+           
                 
             };
             context.Cars.Add(cars);
@@ -78,6 +83,7 @@
                 RentUserID = 1,
                 AlisTarihi = DateTime.Now,
                 AlisYeri = 1,
+                İadeYeri=2,
                 IadeTarihi = DateTime.Now,
                 Status =  ReservationsStatus.Active
 
