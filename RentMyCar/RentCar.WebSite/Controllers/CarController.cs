@@ -1,6 +1,7 @@
 ﻿using BusınessLayer.Concrete;
 using DataEntity;
 using RentCar.WebSite.Filter;
+using RentCar.WebSite.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,7 +28,6 @@ namespace RentCar.WebSite.Controllers
         public ActionResult Details(int id)
         {
             var model = carManager.GetById(id);
-
             return View(model);
         }
 
@@ -63,7 +63,7 @@ namespace RentCar.WebSite.Controllers
         }
 
         // GET: Car/Edit/5
-        public ActionResult Edit(int ? id)
+        public ActionResult Edit(int? id)
         {
 
             if (id == null)
@@ -75,9 +75,16 @@ namespace RentCar.WebSite.Controllers
             {
                 return HttpNotFound();
             }
+
+            var model = new CarDetailModel()
+            {
+                 Car = car,
+                 YakitTipleri = LookupManager.GetLookups(LookupType.YakitTipi), 
+                 VitesTipleri = LookupManager.GetLookups(LookupType.VitesTipi),
+            };
             //ViewBag.CategoryId = new SelectList(Cache_Helper.GetCategoriesFromCache(), "Id", "Title", car.);
-            return View(car);
-           
+            return View(model);
+
         }
 
         // POST: Car/Edit/5
@@ -92,23 +99,23 @@ namespace RentCar.WebSite.Controllers
                 ProfileImage.ContentType == "image/jpg" ||
                 ProfileImage.ContentType == "image/png"))
                 {
-                    
+
                     string filename = $"user_{model.Id}.{ProfileImage.ContentType.Split('/')[1]}";
                     ProfileImage.SaveAs(Server.MapPath($"~/Content/Admin/Content/Photos/Cars/{filename}"));
                     model.ImageUrl = filename;
-                   
+
                 }
 
 
                 Car db_car = carManager.Find(x => x.Id == model.Id);
 
-               
+
                 db_car.IsActive = model.IsActive;
                 db_car.GunlukUcret = model.GunlukUcret;
                 db_car.KasaTipi = model.KasaTipi;
                 db_car.Plaka = model.Plaka;
                 db_car.SürücüYas = model.SürücüYas;
-                db_car.VitesTürü = model.VitesTürü;
+                db_car.VitesTipi = model.VitesTipi;
                 db_car.YakitTipi = model.YakitTipi;
                 db_car.YolcuSayisi = model.YolcuSayisi;
                 db_car.Yıl = model.Yıl;
@@ -129,7 +136,7 @@ namespace RentCar.WebSite.Controllers
         }
 
         // GET: Car/Delete/5
-        public ActionResult Delete(int ? id)
+        public ActionResult Delete(int? id)
         {
             if (id == null)
             {
@@ -142,7 +149,7 @@ namespace RentCar.WebSite.Controllers
             if (car == null)
             {
 
-                 return HttpNotFound();
+                return HttpNotFound();
             }
             return View(car);
         }
@@ -162,7 +169,7 @@ namespace RentCar.WebSite.Controllers
 
             carManager.Save();
 
-            return RedirectToAction("Index","Car");
+            return RedirectToAction("Index", "Car");
         }
     }
 }

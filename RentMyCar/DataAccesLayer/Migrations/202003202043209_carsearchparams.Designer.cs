@@ -7,13 +7,13 @@ namespace DataAccesLayer.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.0")]
-    public sealed partial class backoff : IMigrationMetadata
+    public sealed partial class carsearchparams : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(backoff));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(carsearchparams));
         
         string IMigrationMetadata.Id
         {
-            get { return "202003201550132_backoff"; }
+            get { return "202003202043209_carsearchparams"; }
         }
         
         string IMigrationMetadata.Source

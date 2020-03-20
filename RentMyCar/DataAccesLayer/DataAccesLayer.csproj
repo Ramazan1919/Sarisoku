@@ -55,25 +55,9 @@
     <Compile Include="Concrete\EF\GenericRepository.cs" />
     <Compile Include="Concrete\EF\RentACarContext.cs" />
     <Compile Include="Concrete\EF\RepositoryBase.cs" />
-    <Compile Include="Migrations\202003151412128_login.cs" />
-    <Compile Include="Migrations\202003151412128_login.designer.cs">
-      <DependentUpon>202003151412128_login.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202003191354228_Edit_Delete.cs" />
-    <Compile Include="Migrations\202003191354228_Edit_Delete.designer.cs">
-      <DependentUpon>202003191354228_Edit_Delete.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202003191831466_iadeYeri.cs" />
-    <Compile Include="Migrations\202003191831466_iadeYeri.designer.cs">
-      <DependentUpon>202003191831466_iadeYeri.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202003200742188_denem.cs" />
-    <Compile Include="Migrations\202003200742188_denem.designer.cs">
-      <DependentUpon>202003200742188_denem.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202003201550132_backoff.cs" />
-    <Compile Include="Migrations\202003201550132_backoff.designer.cs">
-      <DependentUpon>202003201550132_backoff.cs</DependentUpon>
+    <Compile Include="Migrations\202003202043209_carsearchparams.cs" />
+    <Compile Include="Migrations\202003202043209_carsearchparams.designer.cs">
+      <DependentUpon>202003202043209_carsearchparams.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -89,20 +73,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202003151412128_login.resx">
-      <DependentUpon>202003151412128_login.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202003191354228_Edit_Delete.resx">
-      <DependentUpon>202003191354228_Edit_Delete.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202003191831466_iadeYeri.resx">
-      <DependentUpon>202003191831466_iadeYeri.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202003200742188_denem.resx">
-      <DependentUpon>202003200742188_denem.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202003201550132_backoff.resx">
-      <DependentUpon>202003201550132_backoff.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202003202043209_carsearchparams.resx">
+      <DependentUpon>202003202043209_carsearchparams.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

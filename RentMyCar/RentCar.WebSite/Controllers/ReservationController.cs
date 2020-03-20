@@ -57,7 +57,7 @@ namespace RentCar.WebSite.Controllers
                 Reservation = reservation,
                 CarList = carlist,
                 Locations = LookupManager.GetLookups(LookupType.Locations),
-                ReservationStatuses = LookupManager.GetLookups(LookupType.ReservationStatus)
+                ReservationStatuses = LookupManager.GetLookups(LookupType.ReservationStatus),
             };
             return View(model);
         }

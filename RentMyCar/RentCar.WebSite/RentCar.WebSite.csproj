@@ -137,7 +137,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Extensions.cs" />
+    <Compile Include="Models\CarDetailModel.cs" />
     <Compile Include="Models\ReservationDetailModel.cs" />
+    <Compile Include="Models\SearchResultModel.cs" />
     <Compile Include="Models\SearchModel.cs" />
     <Compile Include="Models\SessionModel.cs" />
     <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />

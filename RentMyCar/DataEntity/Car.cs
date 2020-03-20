@@ -25,7 +25,7 @@ namespace DataEntity
         public string KasaTipi { get; set; }
 
         [Required]
-        public string YakitTipi { get; set; }
+        public YakitTipi YakitTipi { get; set; }
 
         [Required]
         public decimal GunlukUcret { get; set; }
@@ -40,7 +40,7 @@ namespace DataEntity
         //}
 
         [Required]
-        public string VitesTürü { get; set; }
+        public VitesTipi VitesTipi { get; set; }
 
         public bool IsActive { get; set; }
 

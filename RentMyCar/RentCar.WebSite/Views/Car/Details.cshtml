@@ -1,4 +1,5 @@
-﻿@model DataEntity.Car
+﻿@using BusınessLayer.Concrete;
+@model DataEntity.Car
 
 @{
     ViewBag.Title = "Details";
@@ -43,19 +44,19 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.YakitTipi)
+            @Html.DisplayNameFor(model => LookupManager.GetLookupName(DataEntity.LookupType.YakitTipi, (int)model.YakitTipi, "-"))
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.YakitTipi)
+            @Html.DisplayFor(model => LookupManager.GetLookupName(DataEntity.LookupType.YakitTipi, (int)model.YakitTipi, "-"))
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.VitesTürü)
+            @Html.DisplayNameFor(model => LookupManager.GetLookupName(DataEntity.LookupType.VitesTipi, (int)model.VitesTipi, "-"))
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.VitesTürü)
+            @Html.DisplayFor(model => LookupManager.GetLookupName(DataEntity.LookupType.VitesTipi, (int)model.VitesTipi, "-"))
         </dd>
 
         <dt>

@@ -3,7 +3,7 @@
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class login : DbMigration
+    public partial class carsearchparams : DbMigration
     {
         public override void Up()
         {
@@ -27,9 +27,9 @@
                         Yıl = c.String(nullable: false),
                         Plaka = c.String(nullable: false),
                         KasaTipi = c.String(nullable: false),
-                        YakitTipi = c.String(nullable: false),
+                        YakitTipi = c.Int(nullable: false),
                         GunlukUcret = c.Decimal(nullable: false, precision: 18, scale: 2),
-                        VitesTürü = c.String(nullable: false),
+                        VitesTipi = c.Int(nullable: false),
                         IsActive = c.Boolean(nullable: false),
                         EhliyetYas = c.Int(nullable: false),
                         BagajLitre = c.Int(nullable: false),

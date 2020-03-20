@@ -62,6 +62,15 @@ namespace BusınessLayer.Concrete
             AddItem(ref _lookupItems, (int)ReservationsStatus.Active, "Aktif", LookupType.ReservationStatus, 1);
             AddItem(ref _lookupItems, (int)ReservationsStatus.Passive, "Pasif", LookupType.ReservationStatus, 2);
             AddItem(ref _lookupItems, (int)ReservationsStatus.Cancelled, "İptal Edildi", LookupType.ReservationStatus, 3);
+
+            AddItem(ref _lookupItems, (int)VitesTipi.Manuel, "Manuel", LookupType.VitesTipi, 3);
+            AddItem(ref _lookupItems, (int)VitesTipi.YariOtomatik, "Yarı Otomatik", LookupType.VitesTipi, 2);
+            AddItem(ref _lookupItems, (int)VitesTipi.Otomatik, "Otomatik", LookupType.VitesTipi, 1);
+
+            AddItem(ref _lookupItems, (int)YakitTipi.Benzin, "Benzin", LookupType.YakitTipi, 1);
+            AddItem(ref _lookupItems, (int)YakitTipi.Dizel, "Dizel", LookupType.YakitTipi, 2);
+            AddItem(ref _lookupItems, (int)YakitTipi.LPG, "LPG", LookupType.YakitTipi, 3);
+            AddItem(ref _lookupItems, (int)YakitTipi.Hybrid, "Hybrid", LookupType.YakitTipi, 4);
         }
 
         private static void AddItem(ref List<LookupItem> lookupItems, int id, string name, LookupType type, int order, StatusType status = StatusType.Active, int parentID = 0)

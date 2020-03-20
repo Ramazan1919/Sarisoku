@@ -1,8 +1,11 @@
-﻿@model  RentCar.WebSite.Models.SearchModel
+﻿@using RentCar.WebSite.Models
+@using BusınessLayer.Concrete
 
+@model  RentCar.WebSite.Models.SearchModel
 
-
-
+@{
+    var locations = LookupManager.GetLookups(DataEntity.LookupType.Locations);
+}
 
 <section id="banner" class="lazy hidden-xs" style="margin-top:150px; background-image:url(../../Content/Themes/images/uye_giris_bg.jpg); ">
     <div class="container-fluid">
@@ -17,39 +20,39 @@
 
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-        <div class="row">
+            <div class="row">
 
-            <div class="form-group col-md-3 ">
-                @Html.LabelFor(model => model.Rezervasyon.AlisYeri, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="dropdown">
-                    @Html.EditorFor(model => model.Rezervasyon.AlisYeri, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Rezervasyon.AlisYeri, "", new { @class = "text-danger" })
+                <div class="form-group col-md-3 ">
+                    @Html.LabelFor(model => model.AlisYeri, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="dropdown">
+                        @Html.DropDownListFor(x => x.AlisYeri, locations.ToItems(Model==null ? 0 : Model.AlisYeri), new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.AlisYeri, "", new { @class = "text-danger" })
+                    </div>
                 </div>
-            </div>
-         
 
 
-            <div class="form-group col-md-3 ">
-                @Html.LabelFor(model => model.Rezervasyon.AlisTarihi, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="start-date">
-                    @Html.EditorFor(model => model.Rezervasyon.AlisTarihi, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Rezervasyon.AlisTarihi, "", new { @class = "text-danger" })
+
+                <div class="form-group col-md-3 ">
+                    @Html.LabelFor(model => model.AlisTarihi, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="start-date">
+                        @Html.EditorFor(model => model.AlisTarihi, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.AlisTarihi, "", new { @class = "text-danger" })
+                    </div>
                 </div>
-            </div>
 
-            <div class="form-group col-md-3 ">
-                @Html.LabelFor(model => model.Rezervasyon.IadeTarihi, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class=" end-date">
-                    @Html.EditorFor(model => model.Rezervasyon.IadeTarihi, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Rezervasyon.IadeTarihi, "", new { @class = "text-danger" })
+                <div class="form-group col-md-3 ">
+                    @Html.LabelFor(model => model.IadeTarihi, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class=" end-date">
+                        @Html.EditorFor(model => model.IadeTarihi, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.IadeTarihi, "", new { @class = "text-danger" })
+                    </div>
                 </div>
-            </div>
 
-            <div class="col-md-3 form-group ">
-                <button type="submit" class="fa fa-search"> Ara</button>
-            </div>
+                <div class="col-md-3 form-group ">
+                    <button type="submit" class="fa fa-search"> Ara</button>
+                </div>
 
-        </div>
+            </div>
 
         }
 
