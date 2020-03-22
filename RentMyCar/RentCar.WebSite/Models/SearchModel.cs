@@ -1,5 +1,6 @@
 ﻿using DataEntity;
 using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace RentCar.WebSite.Models
 {
@@ -11,10 +12,17 @@ namespace RentCar.WebSite.Models
 
         public YakitTipi YakitTipi { get; set; }
 
-        public int AlisYeri { get; set; }
+        public KasaTipi KasaTipi { get; set; }
 
+        public Locations Locations { get; set; }
+
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime AlisTarihi { get; set; }
 
+
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime IadeTarihi { get; set; }
     }
 }

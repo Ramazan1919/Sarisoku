@@ -43,7 +43,7 @@ namespace RentACar.Controllers
 
             if (model!=null)
             {
-                var carlist = carManager.List(x=>x.IsActive);
+                var carlist = carManager.List(x=>x.IsActive && x.Locations==model.Locations);
 
                 if(model.CarID > 0)
                 {
@@ -67,6 +67,9 @@ namespace RentACar.Controllers
                 resultModel.AvailableCars = carlist.Where(i=> !reservationList.Any(r=>r.CarID==i.Id)).ToList();
                 resultModel.ReservedCars = carlist.Where(i => reservationList.Any(r => r.CarID == i.Id)).ToList();
                 resultModel.ActiveReservations = reservationList;
+
+                
+
             }
 
             return View("ListOfCars", resultModel);

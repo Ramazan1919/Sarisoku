@@ -10,5 +10,13 @@ namespace RentCar.WebSite.Models
         public List<LookupItem> VitesTipleri { get; set; }
 
         public List<LookupItem> YakitTipleri { get; set; }
+
+        public List<LookupItem> KasaTipleri { get; set; }
+
+        public List<LookupItem> MarkaTipleri { get; set; }
+
+        public List<LookupItem> LocationTipleri { get; set; }
+
+
     }
 }

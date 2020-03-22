@@ -13,6 +13,9 @@ namespace DataEntity
         [Required]
         public string ArabaAdi { get; set; }
 
+        [Required]
+        public Marka Marka  { get; set; }
+
         public string ImageUrl { get; set; }
 
         [Required]
@@ -22,10 +25,14 @@ namespace DataEntity
         public string Plaka { get; set; }
 
         [Required]
-        public string KasaTipi { get; set; }
+        public KasaTipi KasaTipi { get; set; }
 
         [Required]
         public YakitTipi YakitTipi { get; set; }
+
+        [Required]
+        public Locations Locations { get; set; }
+
 
         [Required]
         public decimal GunlukUcret { get; set; }
@@ -57,6 +64,9 @@ namespace DataEntity
         public int YolcuSayisi { get; set; }
 
         public decimal Depozito { get; set; }
+
+
+      
 
       
     }

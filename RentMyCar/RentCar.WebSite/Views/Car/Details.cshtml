@@ -1,5 +1,8 @@
-﻿@using BusınessLayer.Concrete;
-@model DataEntity.Car
+﻿@using RentCar.WebSite.Models
+@using BusınessLayer.Concrete
+@model RentCar.WebSite.Models.CarDetailModel
+
+
 
 @{
     ViewBag.Title = "Details";
@@ -12,64 +15,74 @@
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.ImageUrl)
+            @Html.DisplayNameFor(model => model.Car.ImageUrl)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.ImageUrl)
+            @Html.DisplayFor(model => model.Car.ImageUrl)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Yıl)
+            @Html.DisplayNameFor(model => model.Car.Yıl)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Yıl)
+            @Html.DisplayFor(model => model.Car.Yıl)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Plaka)
+            @Html.DisplayNameFor(model => model.Car.Plaka)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Plaka)
+            @Html.DisplayFor(model => model.Car.Plaka)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.KasaTipi)
+            @Html.DisplayNameFor(model => LookupManager.GetLookupName(DataEntity.LookupType.Marka, (int)model.Car.Marka, "-"))
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.KasaTipi)
+            @Html.DisplayFor(model => LookupManager.GetLookupName(DataEntity.LookupType.Marka, (int)model.Car.Marka, "-"))
+        </dd>
+
+
+
+        <dt>
+            @Html.DisplayNameFor(model => LookupManager.GetLookupName(DataEntity.LookupType.KasaTipi, (int)model.Car.KasaTipi, "-"))
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => LookupManager.GetLookupName(DataEntity.LookupType.KasaTipi, (int)model.Car.KasaTipi, "-"))
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => LookupManager.GetLookupName(DataEntity.LookupType.YakitTipi, (int)model.YakitTipi, "-"))
+            @Html.DisplayNameFor(model => LookupManager.GetLookupName(DataEntity.LookupType.YakitTipi, (int)model.Car.YakitTipi, "-"))
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => LookupManager.GetLookupName(DataEntity.LookupType.YakitTipi, (int)model.YakitTipi, "-"))
+            @Html.DisplayFor(model => LookupManager.GetLookupName(DataEntity.LookupType.YakitTipi, (int)model.Car.YakitTipi, "-"))
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => LookupManager.GetLookupName(DataEntity.LookupType.VitesTipi, (int)model.VitesTipi, "-"))
+            @Html.DisplayNameFor(model => LookupManager.GetLookupName(DataEntity.LookupType.VitesTipi, (int)model.Car.VitesTipi, "-"))
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => LookupManager.GetLookupName(DataEntity.LookupType.VitesTipi, (int)model.VitesTipi, "-"))
+            @Html.DisplayFor(model => LookupManager.GetLookupName(DataEntity.LookupType.VitesTipi, (int)model.Car.VitesTipi, "-"))
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.IsActive)
+            @Html.DisplayNameFor(model => model.Car.IsActive)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.IsActive)
+            @Html.DisplayFor(model => model.Car.IsActive)
         </dd>
 
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new {  id = Model.Id  },new { @class="btn btn-danger"}) |
-    @Html.ActionLink("Listeye Dön", "Index",null,new { @class=" btn btn-primary"})
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Car.Id }, new { @class = "btn btn-danger" }) |
+    @Html.ActionLink("Listeye Dön", "Index", null, new { @class = " btn btn-primary" })
 </p>

@@ -59,6 +59,14 @@
     <Compile Include="Migrations\202003202043209_carsearchparams.designer.cs">
       <DependentUpon>202003202043209_carsearchparams.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202003210836584_MarkaType.cs" />
+    <Compile Include="Migrations\202003210836584_MarkaType.designer.cs">
+      <DependentUpon>202003210836584_MarkaType.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202003211233411_Location.cs" />
+    <Compile Include="Migrations\202003211233411_Location.designer.cs">
+      <DependentUpon>202003211233411_Location.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -75,6 +83,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202003202043209_carsearchparams.resx">
       <DependentUpon>202003202043209_carsearchparams.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003210836584_MarkaType.resx">
+      <DependentUpon>202003210836584_MarkaType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003211233411_Location.resx">
+      <DependentUpon>202003211233411_Location.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

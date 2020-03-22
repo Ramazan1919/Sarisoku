@@ -60,11 +60,17 @@
             <div class="form-group">
                 @Html.LabelFor(model => model.Car.KasaTipi, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.EditorFor(model => model.Car.KasaTipi, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.DropDownListFor(x => x.Car.KasaTipi, Model.KasaTipleri.ToItems((int)Model.Car.KasaTipi), new { @class = "form-control" })
                     @Html.ValidationMessageFor(model => model.Car.KasaTipi, "", new { @class = "text-danger" })
                 </div>
             </div>
-
+            <div class="form-group">
+                @Html.LabelFor(model => model.Car.Locations, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownListFor(x => x.Car.Locations, Model.LocationTipleri.ToItems((int)Model.Car.Locations), new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Car.KasaTipi, "", new { @class = "text-danger" })
+                </div>
+            </div>
             <div class="form-group">
                 @Html.LabelFor(model => model.Car.YakitTipi, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
@@ -72,6 +78,15 @@
                     @Html.ValidationMessageFor(model => model.Car.YakitTipi, "", new { @class = "text-danger" })
                 </div>
             </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.Car.Marka, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownListFor(x => x.Car.Marka, Model.MarkaTipleri.ToItems((int)Model.Car.Marka), new { @class = "form-control" })
+                    @Html.ValidationMessageFor(model => model.Car.Marka, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
 
             <div class="form-group">
                 @Html.LabelFor(model => model.Car.GunlukUcret, htmlAttributes: new { @class = "control-label col-md-2" })

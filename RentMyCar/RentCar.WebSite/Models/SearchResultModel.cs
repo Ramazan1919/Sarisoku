@@ -8,6 +8,8 @@ namespace RentCar.WebSite.Models
     {
         public SearchModel SearchModel { get; set; }
 
+        
+
         public List<Car> AvailableCars { get; set; }
 
         public List<Car> ReservedCars { get; set; }

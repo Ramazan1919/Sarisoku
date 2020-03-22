@@ -27,19 +27,32 @@ namespace RentCar.WebSite.Controllers
         // GET: Car/Details/5
         public ActionResult Details(int id)
         {
-            var model = carManager.GetById(id);
-            return View(model);
+            var car = carManager.GetById(id);
+
+            //Editlenecek Bitmedi
+
+            return View(car);
         }
 
         // GET: Car/Create
         public ActionResult Create()
         {
-            return View();
+            var model = new CarDetailModel()
+            {
+                 Car=new Car(),
+                YakitTipleri = LookupManager.GetLookups(LookupType.YakitTipi),
+                VitesTipleri = LookupManager.GetLookups(LookupType.VitesTipi),
+                MarkaTipleri = LookupManager.GetLookups(LookupType.Marka),
+                KasaTipleri=LookupManager.GetLookups(LookupType.KasaTipi),
+                LocationTipleri= LookupManager.GetLookups(LookupType.Locations),
+
+            };
+            return View(model);
         }
 
         // POST: Car/Create
         [HttpPost]
-        public ActionResult Create(Car model, HttpPostedFileBase ProfileImage)
+        public ActionResult Create(CarDetailModel model, HttpPostedFileBase ProfileImage)
         {
             if (ModelState.IsValid)
             {
@@ -48,10 +61,10 @@ namespace RentCar.WebSite.Controllers
                 ProfileImage.ContentType == "image/jpg" ||
                 ProfileImage.ContentType == "image/png"))
                 {
-                    carManager.Insert(model);
-                    string filename = $"user_{model.Id}.{ProfileImage.ContentType.Split('/')[1]}";
+                    carManager.Insert(model.Car);
+                    string filename = $"user_{model.Car.Id}.{ProfileImage.ContentType.Split('/')[1]}";
                     ProfileImage.SaveAs(Server.MapPath($"~/Content/Admin/Content/Photos/Cars/{filename}"));
-                    model.ImageUrl = filename;
+                    model.Car.ImageUrl = filename;
                     carManager.Save();
                 }
                 return RedirectToAction("Index", "Car");
@@ -81,8 +94,11 @@ namespace RentCar.WebSite.Controllers
                  Car = car,
                  YakitTipleri = LookupManager.GetLookups(LookupType.YakitTipi), 
                  VitesTipleri = LookupManager.GetLookups(LookupType.VitesTipi),
+                 MarkaTipleri= LookupManager.GetLookups(LookupType.Marka),
+                 KasaTipleri= LookupManager.GetLookups(LookupType.KasaTipi),
+                 LocationTipleri= LookupManager.GetLookups(LookupType.Locations),
             };
-            //ViewBag.CategoryId = new SelectList(Cache_Helper.GetCategoriesFromCache(), "Id", "Title", car.);
+          
             return View(model);
 
         }
@@ -90,7 +106,7 @@ namespace RentCar.WebSite.Controllers
         // POST: Car/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(Car model, HttpPostedFileBase ProfileImage)
+        public ActionResult Edit(CarDetailModel model, HttpPostedFileBase ProfileImage)
         {
             if (ModelState.IsValid)
             {
@@ -100,30 +116,32 @@ namespace RentCar.WebSite.Controllers
                 ProfileImage.ContentType == "image/png"))
                 {
 
-                    string filename = $"user_{model.Id}.{ProfileImage.ContentType.Split('/')[1]}";
+                    string filename = $"user_{model.Car.Id}.{ProfileImage.ContentType.Split('/')[1]}";
                     ProfileImage.SaveAs(Server.MapPath($"~/Content/Admin/Content/Photos/Cars/{filename}"));
-                    model.ImageUrl = filename;
+                    model.Car.ImageUrl = filename;
 
                 }
 
 
-                Car db_car = carManager.Find(x => x.Id == model.Id);
+                Car db_car = carManager.Find(x => x.Id == model.Car.Id);
 
 
-                db_car.IsActive = model.IsActive;
-                db_car.GunlukUcret = model.GunlukUcret;
-                db_car.KasaTipi = model.KasaTipi;
-                db_car.Plaka = model.Plaka;
-                db_car.SürücüYas = model.SürücüYas;
-                db_car.VitesTipi = model.VitesTipi;
-                db_car.YakitTipi = model.YakitTipi;
-                db_car.YolcuSayisi = model.YolcuSayisi;
-                db_car.Yıl = model.Yıl;
-                db_car.ArabaAdi = model.ArabaAdi;
-                db_car.BagajLitre = model.BagajLitre;
-                db_car.Depozito = model.Depozito;
-                db_car.EhliyetYas = model.EhliyetYas;
-                db_car.ImageUrl = model.ImageUrl;
+                db_car.IsActive = model.Car.IsActive;
+                db_car.GunlukUcret = model.Car.GunlukUcret;
+                db_car.KasaTipi = model.Car.KasaTipi;
+                db_car.Plaka = model.Car.Plaka;
+                db_car.SürücüYas = model.Car.SürücüYas;
+                db_car.VitesTipi = model.Car.VitesTipi;
+                db_car.YakitTipi = model.Car.YakitTipi;
+                db_car.YolcuSayisi = model.Car.YolcuSayisi;
+                db_car.Marka = model.Car.Marka;
+                db_car.Locations = model.Car.Locations;
+                db_car.Yıl = model.Car.Yıl;
+                db_car.ArabaAdi = model.Car.ArabaAdi;
+                db_car.BagajLitre = model.Car.BagajLitre;
+                db_car.Depozito = model.Car.Depozito;
+                db_car.EhliyetYas = model.Car.EhliyetYas;
+                db_car.ImageUrl = model.Car.ImageUrl;
                 carManager.Update(db_car);
 
                 return RedirectToAction("Index", "Car");

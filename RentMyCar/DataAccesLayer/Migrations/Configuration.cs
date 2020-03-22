@@ -60,7 +60,7 @@
                 BagajLitre = 5,
                 EhliyetYas = 21,
                 GunlukUcret = 50,
-                KasaTipi = "Sedan",
+                KasaTipi = KasaTipi.Sedan,
                 Plaka = "19-tk 393",
                 SürücüYas = 25,
                 VitesTipi = VitesTipi.Manuel,
@@ -68,7 +68,9 @@
                 YolcuSayisi = 5,
                 Yıl = "2005",
                 Depozito = 500,
+                Marka=Marka.Renault,
                 ArabaAdi = "Megan HB",
+                Locations=Locations.Ankara
            
                 
             };

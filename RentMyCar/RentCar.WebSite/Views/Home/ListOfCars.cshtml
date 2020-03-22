@@ -3,6 +3,11 @@
 
 @model SearchResultModel
 
+@{
+    var TotDays=(Model.SearchModel.IadeTarihi - Model.SearchModel.AlisTarihi).TotalDays;
+    
+}
+
 <div class="container-fluid"><h1>Araç Kiralama</h1></div>
 
 <div class="main">
@@ -16,15 +21,15 @@
 
                         <ul>
                             <li>
-                                <span>Alış ve Teslim Yeri</span><h2> </h2>
+                                <span>Alış ve Teslim Yeri</span><h2>@Model.SearchModel.Locations </h2>
 
                             </li>
                             <li>
-                                <span>Alış ve Teslim Saati</span><h2>14 Mar, 15:15 - 21 Mar, 15:15</h2>
+                                <span>Alış ve Teslim Tarihi</span><h2>@Model.SearchModel.AlisTarihi - @Model.SearchModel.IadeTarihi</h2>
 
                             </li>
                             <li class="active"><span>Araç Modeli</span><h2>Araç Modelini Seçin</h2></li>
-                            <li><span>İlave Ekipman</span><h2>İlave Ekipman İçin İletişime Geçin</h2></li>
+                            <li><span>Rezervasyon </span><h2>Rezervasyon İçin İletişime Geçin</h2></li>
                         </ul>
 
                     </div>
@@ -108,7 +113,7 @@
                                 <button onclick="window.location.href='/Home/Contact'" class="buyNow">
 
 
-                                    Toplam:   @car.GunlukUcret TL
+                                    Toplam:   ((@car.GunlukUcret)*(@TotDays)) TL
                                     <br />
                                     Rezervasyon Yap
 
@@ -122,6 +127,8 @@
 
                 @if (Model.ReservedCars.HasElement())
                 {
+
+                    <h1>Rezervasyonu Devam Eden Araçlar Ve Bitmesine Kalan Süre @(Model.SearchModel.IadeTarihi-Model.SearchModel.AlisTarihi).TotalDays</h1>
                     foreach (var car in Model.ReservedCars)
                     {
                         <div class="box">
@@ -131,6 +138,8 @@
                                 <div class="content">
 
                                     <div class="contentLeft">
+
+                                        <h5> @car.</h5>
 
                                         <h4>@car.ArabaAdi   </h4>
 
