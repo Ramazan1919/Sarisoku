@@ -2,83 +2,143 @@
 
 @model RentCar.WebSite.Models.ReservationDetailModel
 @{
-    ViewBag.Title = Model != null && Model.Reservation != null && Model.Reservation.Id == 0
-        ? "Rezervasyon Ekle" : "Rezervasyon Detay";
+    ViewBag.Title = Model != null && Model.Reservation != null && Model.Reservation.Id == 0 ? "Rezervasyon Ekle" : "Rezervasyon Detay";
 }
 
 <h2>@ViewBag.Title</h2>
+@if (ViewBag.ReservationResult != null)
+{
+    <p class="alert alert-@((bool)ViewBag.ReservationResult ? "success":"danger")">@ViewBag.ReservationMessage</p>
+}
 
 @if (Model != null && Model.Reservation != null)
 {
-<form method="post" class="form-horizontal">
-    @Html.HiddenFor(x => x.Reservation.Id)
-    <div class="form-group">
-        <label class="col-md-2">Araç Seçimi</label>
-        <div class="col-md-4">
-            @Html.DropDownListFor(x => x.Reservation.CarID, Model.CarList.ToItems(Model.Reservation.CarID), new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.Reservation.CarID)
-        </div>
-    </div>
+    var hasRentUser = Model.Reservation.RentUserID > 0;
+    <form method="post" class="form-horizontal">
+        @Html.HiddenFor(x => x.Reservation.Id)
 
-    <div class="form-group">
-        <label class="col-md-2">Alış Tarihi</label>
-        <div class="col-md-4">
-            @Html.TextBoxFor(x => x.Reservation.AlisTarihi, new { @class = "form-control", maxlength = 20 })
+        <div class="form-group">
+            <label class="col-md-2">Araç Seçimi</label>
+            <div class="col-md-4">
+                @Html.DropDownListFor(x => x.Reservation.CarID, Model.CarList.ToItems(Model.Reservation.CarID), new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Reservation.CarID)
+            </div>
         </div>
-    </div>
 
-    <div class="form-group">
-        <label class="col-md-2">İade Tarihi</label>
-        <div class="col-md-4">
-            @Html.TextBoxFor(x => x.Reservation.IadeTarihi, new { @class = "form-control", maxlength = 20 })
+        <div class="form-group">
+            <label class="col-md-2">Kiralayan Bilgileri</label>
+            <div class="col-md-4">
+                @Html.DropDownListFor(x => x.Reservation.RentUserID, Model.RentUserList.ToItems(Model.Reservation.RentUserID, false), new { @class = "form-control sbx-rentuser" })
+                @Html.ValidationMessageFor(model => model.Reservation.RentUserID)
+            </div>
         </div>
-    </div>
 
-    <div class="form-group">
-        <label class="col-md-2">Alış Yeri</label>
-        <div class="col-md-4">
-            @Html.DropDownListFor(x => x.Reservation.AlisYeri, Model.Locations.ToItems(Model.Reservation.AlisYeri), new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.Reservation.AlisYeri)
-        </div>
-    </div>
+        <div class="form-group rentuser-field @(hasRentUser?"dn":"")">
+            <label class="col-md-2">Kiralayan Adı</label>
+            <div class="col-md-4">
+                @Html.TextBoxFor(x => x.Reservation.RentUser.Name, new { @class = "form-control", maxlength = 20 })
+                @Html.ValidationMessageFor(model => model.Reservation.RentUser.Name)
 
-    <div class="form-group">
-        <label class="col-md-2">İade Yeri</label>
-        <div class="col-md-4">
-            @Html.DropDownListFor(x => x.Reservation.İadeYeri, Model.Locations.ToItems(Model.Reservation.İadeYeri), new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.Reservation.İadeYeri)
+            </div>
         </div>
-    </div>
 
-    <div class="form-group">
-        <label class="col-md-2">Rezervasyon Durumu</label>
-        <div class="col-md-4">
-            @Html.DropDownListFor(x => x.Reservation.Status, Model.ReservationStatuses.ToItems((int)Model.Reservation.Status, false), new { @class = "form-control" })
+        <div class="form-group rentuser-field @(hasRentUser?"dn":"")">
+            <label class="col-md-2">Kiralayan Telefon</label>
+            <div class="col-md-4">
+                @Html.TextBoxFor(x => x.Reservation.RentUser.PhoneNumber, new { @class = "form-control", maxlength = 20 })
+                @Html.ValidationMessageFor(model => model.Reservation.RentUser.PhoneNumber)
+
+            </div>
         </div>
-    </div>
-    <div class="form-group">
-        <label class="col-md-2">&nbsp;</label>
-        <div class="col-md-4">
-            @if (Model.Reservation.Id > 0 && Model.Reservation.Status != DataEntity.ReservationsStatus.Cancelled)
-            {
-                <button type="submit" class="btn btn-danger">İptal Et</button>
-            }
-            else if (Model.Reservation.Id > 0)
-            {
-                <button type="submit" class="btn btn-primary">Aktifleştir</button>
-            }
-            <button type="submit" class="btn btn-success">Kaydet</button>
+
+        <div class="form-group">
+            <label class="col-md-2">Alış Tarihi</label>
+            <div class="col-md-4">
+                @Html.TextBoxFor(x => x.Reservation.AlisTarihi, "{0:dd.MM.yyyy}", new { @class = "form-control start-date", maxlength = 20 })
+            </div>
         </div>
-    </div>
-</form>
+
+        <div class="form-group">
+            <label class="col-md-2">İade Tarihi</label>
+            <div class="col-md-4">
+                @Html.TextBoxFor(x => x.Reservation.IadeTarihi, "{0:dd.MM.yyyy}", new { @class = "form-control end-date", maxlength = 20 })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-2">Alış Yeri</label>
+            <div class="col-md-4">
+                @Html.DropDownListFor(x => x.Reservation.AlisYeri, Model.Locations.ToItems(Model.Reservation.AlisYeri), new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Reservation.AlisYeri)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-2">İade Yeri</label>
+            <div class="col-md-4">
+                @Html.DropDownListFor(x => x.Reservation.İadeYeri, Model.Locations.ToItems(Model.Reservation.İadeYeri), new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Reservation.İadeYeri)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-md-2">Rezervasyon Durumu</label>
+            <div class="col-md-4">
+                @Html.DropDownListFor(x => x.Reservation.Status, Model.ReservationStatuses.ToItems((int)Model.Reservation.Status, false), new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-2">&nbsp;</label>
+            <div class="col-md-4">
+                <a href="javascript:window.history.go(-1);" class="btn btn-primary">Geri</a>
+                <button type="submit" class="btn btn-success">Kaydet</button>
+            </div>
+        </div>
+    </form>
 }
 else
 {
     <p class="alert alert-danger">Görüntülemeye çalıştığınız rezervasyon bulunamadı!</p>
 }
 
+<link href="~/Content/Scripts/Datepicker/bootstrap-datepicker.min.css" rel="stylesheet" />
 <style>
-    body{max-width:1120px;margin:0 auto;}
-    .field-validation-error{color:#ff0000;margin-top:5px;display:block;}
+    body { max-width: 1120px; margin: 0 auto; }
+    .field-validation-error { color: #ff0000; margin-top: 5px; display: block; }
+    .dn { display: none !important; }
+    .ui-datepicker { width: auto !important; }
+    body .ui-datepicker td.ui-datepicker-today a { border: 1px solid #0b5caf !important; background: #0b5caf !important; color: #fff !important; }
+    body .ui-datepicker td span, body .ui-datepicker td a { padding: 10px !important; }
 </style>
+
+<script src="~/Scripts/jquery-3.3.1.min.js"></script>
+<script src="~/Content/Scripts/Datepicker/bootstrap-datepicker.min.js"></script>
+<script src="~/Content/Scripts/Datepicker/bootstrap-datepicker.tr.min.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".start-date").datepicker({
+            format: "dd.MM.yyyy",
+            startDate: -20,
+            endDate: 20
+        });
+        $(".end-date").datepicker({
+            format: "dd.MM.yyyy",
+            startDate: -20,
+            endDate: 20
+        });
+
+        $(document).on("change", ".sbx-rentuser", {}, function () {
+            if ($(this).val() == 0) {
+                $(".rentuser-field").removeClass("dn");
+                $("#Reservation_RentUser_Name").val("");
+                $("#Reservation_RentUser_PhoneNumber").val("");
+            }
+            else {
+                $(".rentuser-field").addClass("dn");
+            }
+            return false;
+        });
+    });
+</script>
 

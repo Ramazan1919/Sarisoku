@@ -9,6 +9,8 @@ namespace RentCar.WebSite.Models
 
         public List<LookupItem> CarList { get; set; }
 
+        public List<LookupItem> RentUserList { get; set; }
+
         public List<LookupItem> Locations { get; set; }
 
         public List<LookupItem> ReservationStatuses { get; set; }

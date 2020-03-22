@@ -61,7 +61,7 @@
                 EhliyetYas = 21,
                 GunlukUcret = 50,
                 KasaTipi = KasaTipi.Sedan,
-                Plaka = "19-tk 393",
+                Plaka = "19 TK 393",
                 SürücüYas = 25,
                 VitesTipi = VitesTipi.Manuel,
                 YakitTipi = YakitTipi.Dizel,
@@ -71,8 +71,6 @@
                 Marka=Marka.Renault,
                 ArabaAdi = "Megan HB",
                 Locations=Locations.Ankara
-           
-                
             };
             context.Cars.Add(cars);
             context.SaveChanges();
@@ -88,9 +86,6 @@
                 İadeYeri=2,
                 IadeTarihi = DateTime.Now,
                 Status =  ReservationsStatus.Active
-
-                
-
             };
             context.Rezervasyons.Add(rezervasyon);
             context.SaveChanges();

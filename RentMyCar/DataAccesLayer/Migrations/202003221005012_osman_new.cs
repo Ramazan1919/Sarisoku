@@ -3,7 +3,7 @@
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class carsearchparams : DbMigration
+    public partial class osman_new : DbMigration
     {
         public override void Up()
         {
@@ -23,11 +23,13 @@
                     {
                         Id = c.Int(nullable: false, identity: true),
                         ArabaAdi = c.String(nullable: false),
+                        Marka = c.Int(nullable: false),
                         ImageUrl = c.String(),
                         Yıl = c.String(nullable: false),
                         Plaka = c.String(nullable: false),
-                        KasaTipi = c.String(nullable: false),
+                        KasaTipi = c.Int(nullable: false),
                         YakitTipi = c.Int(nullable: false),
+                        Locations = c.Int(nullable: false),
                         GunlukUcret = c.Decimal(nullable: false, precision: 18, scale: 2),
                         VitesTipi = c.Int(nullable: false),
                         IsActive = c.Boolean(nullable: false),

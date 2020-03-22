@@ -49,15 +49,19 @@
                 =>
                 @LookupManager.GetLookupName(DataEntity.LookupType.Locations, reservation.İadeYeri)
             </td>
-            <td>@LookupManager.GetLookupName(DataEntity.LookupType.ReservationStatus, (int)reservation.Status)</td>
+            <td>
+                <span class="label label-@(reservation.Status== DataEntity.ReservationsStatus.Active ? "success":"danger")">
+                    @LookupManager.GetLookupName(DataEntity.LookupType.ReservationStatus, (int)reservation.Status)
+                </span>
+            </td>
             <td><a class="mb10 btn btn-success" href="@Url.RouteUrl("ReservationDetail", new { id= reservation.Id})">Düzenle</a></td>
         </tr>
     }
 </table>
 
 <style>
+    body { max-width: 1120px; margin: 0 auto; }
     .mb10 { margin-bottom: 10px; }
-
     .btn { background: #000000; border: 2px solid #000000; color: #fff; padding: 5px 14px; }
     .btn-danger { background: #ff006e; border: 2px solid #ff006e; color: #fff; }
     .btn-danger:hover { background: #dc143c; border: 2px solid #dc143c; color: #fff; }

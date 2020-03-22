@@ -220,6 +220,11 @@
     <Content Include="Content\Scripts\buyukharf.js" />
     <Content Include="Content\Scripts\cookiealert.css" />
     <Content Include="Content\Scripts\cookiealert.js" />
+    <Content Include="Content\Scripts\Datepicker\bootstrap-datepicker.css" />
+    <Content Include="Content\Scripts\Datepicker\bootstrap-datepicker.js" />
+    <Content Include="Content\Scripts\Datepicker\bootstrap-datepicker.min.css" />
+    <Content Include="Content\Scripts\Datepicker\bootstrap-datepicker.min.js" />
+    <Content Include="Content\Scripts\Datepicker\bootstrap-datepicker.tr.min.js" />
     <Content Include="Content\Scripts\daterangepicker.tr.js" />
     <Content Include="Content\Scripts\fancybox\dist\jquery.fancybox.css" />
     <Content Include="Content\Scripts\fancybox\dist\jquery.fancybox.js" />
@@ -407,6 +412,7 @@
     <Content Include="Content\Login\vendor\bootstrap\css\bootstrap-reboot.min.css.map" />
     <Content Include="Content\Login\vendor\bootstrap\css\bootstrap.css.map" />
     <Content Include="Content\Login\vendor\bootstrap\css\bootstrap.min.css.map" />
+    <Content Include="Content\Scripts\Datepicker\bootstrap-datepicker.css.map" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
