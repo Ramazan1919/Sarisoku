@@ -14,8 +14,13 @@ namespace RentACar.Controllers
 
         CarManager carManager = new CarManager();
         ReservationManager rezervationManager = new ReservationManager();
+        KampanyaManager kampanyaManager = new KampanyaManager();
         public ActionResult Index()
         {
+
+            
+           ViewBag.model= kampanyaManager.List();
+            ViewBag.ModelCount = kampanyaManager.List().Count;
             return View();
         }
 
@@ -43,9 +48,13 @@ namespace RentACar.Controllers
 
             if (model!=null)
             {
-                var carlist = carManager.List(x=>x.IsActive && x.Locations==model.Locations);
+                var carlist = carManager.List(x=>x.IsActive );
 
-                if(model.CarID > 0)
+                if (model.Locations > 0)
+                {
+                    carlist = carlist.Where(i => i.Locations == model.Locations).ToList();
+                }
+                if (model.CarID > 0)
                 {
                     carlist = carlist.Where(i=>i.Id == model.CarID).ToList();
                 }
@@ -59,7 +68,12 @@ namespace RentACar.Controllers
                 {
                     carlist = carlist.Where(i => i.YakitTipi == model.YakitTipi).ToList();
                 }
-                
+                if (model.KasaTipi > 0)
+                {
+                    carlist = carlist.Where(i => i.KasaTipi == model.KasaTipi).ToList();
+                }
+
+
                 var reservationList = rezervationManager.List(x => x.Status == ReservationsStatus.Active && ((x.AlisTarihi < model.AlisTarihi && x.IadeTarihi > model.AlisTarihi)
                                         || (x.AlisTarihi > model.AlisTarihi && x.AlisTarihi >= model.IadeTarihi)));
 

@@ -53,6 +53,7 @@
   <ItemGroup>
     <Compile Include="Abstract\ManagerBase.cs" />
     <Compile Include="Concrete\AdminManager.cs" />
+    <Compile Include="Concrete\KampanyaManager.cs" />
     <Compile Include="Concrete\LookupManager.cs" />
     <Compile Include="Concrete\RentUserManager.cs" />
     <Compile Include="Concrete\CarManager.cs" />

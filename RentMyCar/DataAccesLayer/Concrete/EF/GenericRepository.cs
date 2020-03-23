@@ -65,11 +65,13 @@ namespace DataAccessLayer.Concrete.EF
             return context.SaveChanges();
         }
 
-        public int Update(T obj)
+        public void Update(T obj)
         {
+            context.Entry(obj).State = System.Data.Entity.EntityState.Modified;
+           
 
-            return Save();
         }
+
     }
 
 

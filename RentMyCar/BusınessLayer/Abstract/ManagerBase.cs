@@ -54,9 +54,9 @@ namespace BusınessLayer.Abstract
             return repo.Save();
         }
 
-        public int Update(T obj)
+        public void Update(T obj)
         {
-            return repo.Update(obj);
+             repo.Update(obj);
         }
     }
 }

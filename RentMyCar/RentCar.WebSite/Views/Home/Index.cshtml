@@ -1,4 +1,5 @@
-﻿
+﻿@using DataEntity
+@model IEnumerable<DataEntity.Kampanya>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -11,7 +12,16 @@
     <input type="hidden" id="hiddenVerisDay">
     <input type="hidden" id="hiddenVerisMonth">
     <input type="hidden" id="hiddenVerisYear">
+
+
     @Html.Partial("_PartialSearchCar")
+    @Html.Partial("_Slide")
+
+
+
+
+
+
     <section id="upgrade">
         <div class="container-fluid" style="padding-left: 0;padding-right: 0;">
             <a href="ziraat-bankasi-bankkart-kullanicilarina-ozel-yuzde30-indirim-avantaji\96.html" title="Central Araç Kiralama Ziraat Bankası Kartı ile Ödeme Kampanyası">
@@ -52,7 +62,7 @@
         </div>
     </section>
 
-  
+
 
     <section id="assistance">
         <div class="container-fluid">

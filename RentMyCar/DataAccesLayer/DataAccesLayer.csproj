@@ -55,13 +55,9 @@
     <Compile Include="Concrete\EF\GenericRepository.cs" />
     <Compile Include="Concrete\EF\RentACarContext.cs" />
     <Compile Include="Concrete\EF\RepositoryBase.cs" />
-    <Compile Include="Migrations\202003221005012_osman_new.cs" />
-    <Compile Include="Migrations\202003221005012_osman_new.designer.cs">
-      <DependentUpon>202003221005012_osman_new.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202003221049408_osman_new2.cs" />
-    <Compile Include="Migrations\202003221049408_osman_new2.designer.cs">
-      <DependentUpon>202003221049408_osman_new2.cs</DependentUpon>
+    <Compile Include="Migrations\202003221755559_campan.cs" />
+    <Compile Include="Migrations\202003221755559_campan.designer.cs">
+      <DependentUpon>202003221755559_campan.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -77,11 +73,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202003221005012_osman_new.resx">
-      <DependentUpon>202003221005012_osman_new.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202003221049408_osman_new2.resx">
-      <DependentUpon>202003221049408_osman_new2.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202003221755559_campan.resx">
+      <DependentUpon>202003221755559_campan.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

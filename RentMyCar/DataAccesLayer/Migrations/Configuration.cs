@@ -50,6 +50,19 @@
             context.SaveChanges();
 
 
+            Kampanya kampanya = new Kampanya()
+            {
+
+                Id = 1,
+                IndirimOrani = 10,
+                IsActive = true,
+                kampanyaUrl="deneme.jpg",
+                Text="Yuzde 10 indirimle tüm arabalarda erken rezervasyon indirimiz"
+            
+
+            };
+            context.Kampanyas.Add(kampanya);
+            context.SaveChanges();
 
 
             Car cars = new Car()
@@ -60,11 +73,11 @@
                 BagajLitre = 5,
                 EhliyetYas = 21,
                 GunlukUcret = 50,
-                KasaTipi = KasaTipi.Sedan,
                 Plaka = "19 TK 393",
                 SürücüYas = 25,
                 VitesTipi = VitesTipi.Manuel,
                 YakitTipi = YakitTipi.Dizel,
+                KasaTipi = KasaTipi.HatchBack,
                 YolcuSayisi = 5,
                 Yıl = "2005",
                 Depozito = 500,

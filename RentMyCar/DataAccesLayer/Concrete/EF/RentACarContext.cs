@@ -13,6 +13,10 @@ namespace DataAccessLayer.Concrete.EF
         public DbSet<RentUser> RentUsers { get; set; }
 
         public DbSet<Rezervasyon> Rezervasyons { get; set; }
-        
+
+
+        public DbSet<Kampanya> Kampanyas { get; set; }
+
+
     }
 }
