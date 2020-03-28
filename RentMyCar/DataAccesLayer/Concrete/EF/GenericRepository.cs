@@ -25,7 +25,6 @@ namespace DataAccessLayer.Concrete.EF
         {
             _objectSet.Remove(obj);
 
-
             return Save();
         }
 
@@ -37,13 +36,6 @@ namespace DataAccessLayer.Concrete.EF
         public T GetById(int id)
         {
             return _objectSet.Find(id);
-        }
-
-        public int Insert(T obj)
-        {
-            _objectSet.Add(obj);
-
-            return Save();
         }
 
         public List<T> List()
@@ -66,15 +58,22 @@ namespace DataAccessLayer.Concrete.EF
             return context.SaveChanges();
         }
 
-        public void Update(T obj)
+        public int Insert(T obj)
         {
-            
-            context.Entry(obj).State =EntityState.Modified;
+            context.Entry(obj).State = EntityState.Added;
+            _objectSet.Add(obj);
 
-            context.SaveChanges();
+            return Save();
         }
 
+        public void Update(T obj)
+        {
+            var entityState = context.Entry(obj).State;
+            if (entityState != EntityState.Modified)
+            {
+                context.Entry(obj).State = entityState = EntityState.Modified;
+            }
+            context.SaveChanges();
+        }
     }
-
-
 }

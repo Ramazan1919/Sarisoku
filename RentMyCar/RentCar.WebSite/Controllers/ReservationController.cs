@@ -60,7 +60,7 @@ namespace RentCar.WebSite.Controllers
             return GetModel(reservation);
         }
 
-        public ActionResult Delete(int ? id)
+        public ActionResult Delete(int? id)
         {
             if (id == null)
             {
@@ -68,36 +68,28 @@ namespace RentCar.WebSite.Controllers
             }
             else
             {
-                var model = _reservationManager.Find(i=>i.Id==id);
+                var model = _reservationManager.Find(i => i.Id == id);
                 if (model == null)
                 {
                     return HttpNotFound();
                 }
 
                 return View(model);
-
-
             }
-
-
         }
+
         [HttpPost]
         public ActionResult Delete(int id)
         {
-            Rezervasyon rezervasyon = _reservationManager.Find(i => i.Id == id);
-
+            var rezervasyon = _reservationManager.Find(i => i.Id == id);
             _reservationManager.Delete(rezervasyon);
-            _reservationManager.Save();
-
             return RedirectToAction("Index", "Reservation");
-
         }
-
 
         [HttpPost]
         public ActionResult Detail(Rezervasyon reservation)
         {
-            var message = "İşlem başarısız. Lütfen daha sonra tekrar deneyiniz!";
+            var message = "İşleminize devam edemiyoruz. Lütfen giriş yaptığınız değerleri kontrol edip tekrar deneyiniz!";
             var success = false;
            
             if (ModelState.IsValid)
@@ -113,19 +105,45 @@ namespace RentCar.WebSite.Controllers
                     }
                     reservation.RentUserID = rentUser.Id;
                 }
+                else
+                {
+                    reservation.RentUser = _rentUserManager.GetById(reservation.RentUserID);
+                }
+
+                if (reservation.AdminID <= 0)
+                {
+                    reservation.AdminID = 1; //şimdilik default 1 atıldı 
+                }
 
                 if (reservation.Id > 0)
                 {
-                    _reservationManager.Update(reservation);
-                    message = "Rezervasyon başarıyla güncellendi.";
+                    var persistent = _reservationManager.GetById(reservation.Id);
+                    if (persistent != null)
+                    {
+                        persistent.İadeYeri = reservation.İadeYeri;
+                        persistent.AlisYeri = reservation.AlisYeri;
+                        persistent.IadeTarihi = reservation.IadeTarihi;
+                        persistent.AlisTarihi = reservation.AlisTarihi;
+                        persistent.CarID = reservation.CarID;
+                        persistent.RentUserID = reservation.RentUserID;
+                        persistent.Status = reservation.Status;
+                        persistent.AdminID = reservation.AdminID;
+
+                        _reservationManager.Update(persistent);
+                        message = "Rezervasyon başarıyla güncellendi.";
+                        success = true;
+                    }
+                    else
+                    {
+                        message = "Rezervasyon bilgileri kaydedilemedi!";
+                    }
                 }
                 else
                 {
-                    reservation.AdminID = 1; //şimdilik default 1 atıldı
                     _reservationManager.Insert(reservation);
                     message = "Yeni rezervasyon kaydı başarıyla eklendi.";
+                    success = true;
                 }
-                success = true;
             }
 
             ViewBag.ReservationResult = success;
@@ -135,9 +153,8 @@ namespace RentCar.WebSite.Controllers
 
         private ActionResult GetModel(Rezervasyon reservation)
         {
-            var list=new List<LookupItem>() { new LookupItem() { ID = 0, Name = "Arabaları Seçiniz", Order = 0 } };
-            var carlist = _carManager.List(i => i.IsActive).Select(i => new LookupItem() { ID = i.Id, Name = i.ArabaAdi }).ToList();
-            list.AddRange(_carManager.List().Select(i => new LookupItem() { ID = i.Id, Name = string.Format("{0} - {1}", i.ArabaAdi, i.Locations) }).OrderBy(o => o.Name).ToList());
+            var carlist = _carManager.List(i => i.IsActive)
+              .Select(i => new LookupItem() { ID = i.Id, Name = string.Format("{0} - {1}", i.ArabaAdi, i.Locations) }).OrderBy(o => o.Name).ToList();
 
             var rentUserList = new List<LookupItem>() { new LookupItem() { ID = 0, Name = "Yeni Kiralayan", Order = 0 } };
             rentUserList.AddRange(_rentUserManager.List().Select(i => new LookupItem() { ID = i.Id, Name = string.Format("{0} - {1}", i.Name, i.PhoneNumber) }).OrderBy(o => o.Name).ToList());
@@ -145,7 +162,7 @@ namespace RentCar.WebSite.Controllers
             var model = new ReservationDetailModel()
             {
                 Reservation = reservation,
-                CarList = list,
+                CarList = carlist,
                 RentUserList = rentUserList,
                 Locations = LookupManager.GetLookups(LookupType.Locations),
                 ReservationStatuses = LookupManager.GetLookups(LookupType.ReservationStatus),

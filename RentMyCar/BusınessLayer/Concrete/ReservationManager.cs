@@ -51,7 +51,13 @@ namespace BusınessLayer.Concrete
                 }
                 return result;
             }
-            return new Rezervasyon();
+
+            return new Rezervasyon()
+            {
+                Status = ReservationsStatus.Active,
+                AlisTarihi = DateTime.Now,
+                IadeTarihi = DateTime.Now
+            };
         }
     }
 }
