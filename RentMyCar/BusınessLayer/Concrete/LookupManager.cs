@@ -50,6 +50,9 @@ namespace BusınessLayer.Concrete
             }
             return defaultValue;
         }
+       
+
+
 
         private static void Load()
         {

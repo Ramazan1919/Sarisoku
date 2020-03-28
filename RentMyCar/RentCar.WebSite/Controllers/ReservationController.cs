@@ -2,6 +2,7 @@
 using DataEntity;
 using RentCar.WebSite.Filter;
 using RentCar.WebSite.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -15,6 +16,7 @@ namespace RentCar.WebSite.Controllers
         private readonly ReservationManager _reservationManager;
         private readonly CarManager _carManager;
         private readonly RentUserManager _rentUserManager;
+   
 
         public ReservationController()
         {
@@ -28,6 +30,29 @@ namespace RentCar.WebSite.Controllers
             var searchResult = _reservationManager.GetReservationList();
             return View(searchResult);
         }
+
+        public ActionResult Control()
+        {
+            var date = DateTime.Now;
+
+            var searchResult = _reservationManager.GetReservationList().Where(i => i.IadeTarihi == date || date>= i.IadeTarihi).ToList();
+
+            if (searchResult != null)
+            {
+
+                foreach(var item in searchResult)
+                {
+
+                    item.Status =0;
+                }
+            }
+
+
+            return RedirectToAction("Index","Reservation");
+
+        }
+
+
 
         public ActionResult Detail(int id)
         {
@@ -74,6 +99,7 @@ namespace RentCar.WebSite.Controllers
         {
             var message = "İşlem başarısız. Lütfen daha sonra tekrar deneyiniz!";
             var success = false;
+           
             if (ModelState.IsValid)
             {
                 //Kiralayan bilgisi yeni ise ekle

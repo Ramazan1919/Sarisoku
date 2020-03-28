@@ -30,7 +30,6 @@ namespace DataEntity
 
 
         [Required]
-        [DisplayName("Alış ve İade Yeri")]
         public Locations Locations { get; set; }
 
 
