@@ -1,0 +1,41 @@
+﻿@model DataEntity.Rezervasyon
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Silmek İsiyor Musun?</h3>
+<div>
+    <h4>Rezervasyon</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.AlisTarihi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AlisTarihi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IadeTarihi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IadeTarihi)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Listeye Dön", "Index")
+        </div>
+    }
+</div>

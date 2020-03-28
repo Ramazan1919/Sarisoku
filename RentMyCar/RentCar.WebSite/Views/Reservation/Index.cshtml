@@ -6,10 +6,12 @@
     ViewBag.Title = "Rezervasyon Listesi";
 }
 
-<h2>@ViewBag.Title 
-    <a class="mb10 btn btn-danger" href="@Url.RouteUrl("ReservationDetail", new { id= 0})">
+<h2>
+    @ViewBag.Title
+<a class="mb10 btn btn-danger" href="@Url.RouteUrl("ReservationDetail", new { id= 0})">
     + Ekle
-    </a>
+</a>
+@Html.ActionLink("Admin Panele Dön", "AdminOperation", "Admin", null, new { @class = "btn btn-primary" })
 </h2>
 
 
@@ -54,7 +56,11 @@
                     @LookupManager.GetLookupName(DataEntity.LookupType.ReservationStatus, (int)reservation.Status)
                 </span>
             </td>
-            <td><a class="mb10 btn btn-success" href="@Url.RouteUrl("ReservationDetail", new { id= reservation.Id})">Düzenle</a></td>
+            <td>
+                <a class="mb10 btn btn-success" href="@Url.RouteUrl("ReservationDetail", new { id= reservation.Id})">Düzenle</a>
+                <a class="mb10 btn btn-success" href="/Reservation/Delete/@reservation.Id">Sil</a>
+            </td>
+          
         </tr>
     }
 </table>

@@ -32,6 +32,33 @@ namespace RentACar.Controllers
             return View(model);
         }
 
+
+        public ActionResult CarList()
+        {
+
+            var model = carManager.List();
+
+            return View(model);
+        }
+
+        public ActionResult GetKampanya()
+        {
+
+            var model = kampanyaManager.List().Where(x=>x.IsActive==true).ToList();
+
+            return View(model);
+        }
+
+
+        public ActionResult KampanyaDetay(int id)
+        {
+            var model = kampanyaManager.List().FirstOrDefault(i =>i.Id==id);
+
+                return View(model);
+        }
+
+
+
         public ActionResult Contact()
         {
            
@@ -81,8 +108,7 @@ namespace RentACar.Controllers
                 resultModel.AvailableCars = carlist.Where(i=> !reservationList.Any(r=>r.CarID==i.Id)).ToList();
                 resultModel.ReservedCars = carlist.Where(i => reservationList.Any(r => r.CarID == i.Id)).ToList();
                 resultModel.ActiveReservations = reservationList;
-
-                
+              
 
             }
 

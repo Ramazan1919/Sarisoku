@@ -1,4 +1,5 @@
 ﻿using DataAccessLayer.Abstract;
+using DataEntity;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -67,9 +68,10 @@ namespace DataAccessLayer.Concrete.EF
 
         public void Update(T obj)
         {
-            context.Entry(obj).State = System.Data.Entity.EntityState.Modified;
-           
+            
+            context.Entry(obj).State =EntityState.Modified;
 
+            context.SaveChanges();
         }
 
     }

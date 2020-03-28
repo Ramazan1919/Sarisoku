@@ -113,7 +113,7 @@ namespace RentCar.WebSite.Controllers
                 kampanyaManager.Update(model);
 
 
-                return RedirectToAction("ındex", "Kampanya");
+                return RedirectToAction("Index", "Kampanya");
             }
 
 

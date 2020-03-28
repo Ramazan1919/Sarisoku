@@ -24,15 +24,7 @@ namespace RentCar.WebSite.Controllers
             return View(model);
         }
 
-        // GET: Car/Details/5
-        public ActionResult Details(int id)
-        {
-            var car = carManager.GetById(id);
-
-            //Editlenecek Bitmedi
-
-            return View(car);
-        }
+     
 
         // GET: Car/Create
         public ActionResult Create()
@@ -129,16 +121,14 @@ namespace RentCar.WebSite.Controllers
                 db_car.IsActive = model.Car.IsActive;
                 db_car.GunlukUcret = model.Car.GunlukUcret;
                 db_car.KasaTipi = model.Car.KasaTipi;
-                db_car.Plaka = model.Car.Plaka;
+                db_car.IndirimOrani = model.Car.IndirimOrani;
                 db_car.SürücüYas = model.Car.SürücüYas;
                 db_car.VitesTipi = model.Car.VitesTipi;
                 db_car.YakitTipi = model.Car.YakitTipi;
-                db_car.YolcuSayisi = model.Car.YolcuSayisi;
                 db_car.Marka = model.Car.Marka;
                 db_car.Locations = model.Car.Locations;
                 db_car.Yıl = model.Car.Yıl;
                 db_car.ArabaAdi = model.Car.ArabaAdi;
-                db_car.BagajLitre = model.Car.BagajLitre;
                 db_car.Depozito = model.Car.Depozito;
                 db_car.EhliyetYas = model.Car.EhliyetYas;
                 db_car.ImageUrl = model.Car.ImageUrl;

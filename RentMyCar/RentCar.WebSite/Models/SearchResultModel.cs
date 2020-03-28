@@ -23,5 +23,10 @@ namespace RentCar.WebSite.Models
                 return AvailableCars.HasElement();
             }
         }
+
+        public decimal getTotal { get; set; }
+
+        public decimal getIndirim { get; set; }
+
     }
 }

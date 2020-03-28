@@ -562,7 +562,6 @@
     <Content Include="Views\Shared\_PartialFooter.cshtml" />
     <Content Include="Views\Shared\_PartialHeadr.cshtml" />
     <Content Include="Views\Car\Create.cshtml" />
-    <Content Include="Views\Car\Details.cshtml" />
     <Content Include="Views\Home\ListOfCars.cshtml" />
     <Content Include="Views\Reservation\Index.cshtml" />
     <Content Include="Views\Reservation\Detail.cshtml" />
@@ -586,6 +585,11 @@
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\Kampanya\Delete.cshtml" />
+    <Content Include="Views\Kampanya\Edit.cshtml" />
+    <Content Include="Views\Home\CarList.cshtml" />
+    <Content Include="Views\Home\GetKampanya.cshtml" />
+    <Content Include="Views\Home\KampanyaDetay.cshtml" />
+    <Content Include="Views\Reservation\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Content\Admin\Content\Photos\Cars\" />

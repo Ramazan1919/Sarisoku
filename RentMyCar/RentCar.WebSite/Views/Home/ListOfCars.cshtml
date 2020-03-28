@@ -3,17 +3,13 @@
 
 @model SearchResultModel
 
+
 @{
-    var TotDays = (Model.SearchModel.IadeTarihi - Model.SearchModel.AlisTarihi).TotalDays;
+
+    var days=(Model.SearchModel.IadeTarihi - Model.SearchModel.AlisTarihi).TotalDays;
+
 
 }
-
-
-
-
-
-
-
 
 
 <div class="container-fluid"><h1>Araç Kiralama</h1></div>
@@ -60,9 +56,9 @@
 
                                     <div class="contentLeft">
 
-                                        <h4>@car.ArabaAdi   </h4>
+                                        <h4> @car.ArabaAdi   </h4> veya benzeri @car.YakitTipi   @car.VitesTipi
 
-                                        <h5> veya benzeri @car.YakitTipi   @car.VitesTipi</h5>
+                                        <h5></h5>
 
                                         <figure>
 
@@ -107,7 +103,7 @@
                                         </ul>
 
                                         <p>Depozito Tutarı: <label>@car.Depozito ₺</label></p>
-
+                                        <p>Günlük Ücret: <label>@car.GunlukUcret ₺</label></p>
                                     </div>
 
                                 </div>
@@ -121,8 +117,14 @@
                                 <button onclick="window.location.href='/Home/Contact'" class="buyNow">
 
 
-                                    Toplam:   ((@car.GunlukUcret)*(@TotDays)) TL
-                                    <br />
+                                    Toplam: @(car.GunlukUcret * days) ₺<br />
+
+                                    @if (car.IndirimOrani > 0)
+                                    {
+                                    <p>İndirimli: @(car.GuncelFiyat * days) ₺</p>
+                                    }
+                         
+                                   
                                     Rezervasyon Yap
 
                                 </button>
@@ -136,7 +138,7 @@
                 @if (Model.ReservedCars.HasElement())
                 {
 
-                    <h1>Rezervasyonu Devam Eden Araçlar Ve Bitmesine Kalan Süre @(Model.SearchModel.IadeTarihi - Model.SearchModel.AlisTarihi).TotalDays</h1>
+                     <h2>Rezervasyonu Devam Eden Araçlar</h2>
                     foreach (var car in Model.ReservedCars)
                     {
                         <div class="box">
@@ -147,7 +149,7 @@
 
                                     <div class="contentLeft">
 
-                                        <h5> @car.</h5>
+                                        <h5> Bitmesine Kalan Süre @(Model.SearchModel.IadeTarihi.Day - Model.SearchModel.AlisTarihi.Day) Gün</h5>
 
                                         <h4>@car.ArabaAdi   </h4>
 

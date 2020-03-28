@@ -1,5 +1,6 @@
 ﻿
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -22,29 +23,28 @@ namespace DataEntity
         public string Yıl { get; set; }
 
         [Required]
-        public string Plaka { get; set; }
-
-        [Required]
         public KasaTipi KasaTipi { get; set; }
 
         [Required]
         public YakitTipi YakitTipi { get; set; }
 
+
         [Required]
+        [DisplayName("Alış ve İade Yeri")]
         public Locations Locations { get; set; }
 
 
         [Required]
-        public decimal GunlukUcret { get; set; }
+        public int GunlukUcret { get; set; }
         
-        //[Required]
-        //public decimal KampanyaOranı { get; set; }
+        [Required]
+       public int  IndirimOrani { get; set; }
 
-        //public decimal GuncelFiyat
-        //{
+        public int GuncelFiyat
+        {
 
-        //    get { return GunlukUcret - ((GunlukUcret * KampanyaOranı) / 100); }
-        //}
+           get { return GunlukUcret - ((GunlukUcret * IndirimOrani) / 100); }
+        }
 
         [Required]
         public VitesTipi VitesTipi { get; set; }
@@ -54,14 +54,12 @@ namespace DataEntity
         [Required]
         public int EhliyetYas { get; set; }
 
-        [Required]
-        public int BagajLitre { get; set; }
+       
 
         [Required]
         public int SürücüYas { get; set; }
 
-        [Required]
-        public int YolcuSayisi { get; set; }
+       
 
         public decimal Depozito { get; set; }
 

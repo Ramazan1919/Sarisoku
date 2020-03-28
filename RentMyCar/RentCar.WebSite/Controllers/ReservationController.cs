@@ -4,6 +4,7 @@ using RentCar.WebSite.Filter;
 using RentCar.WebSite.Models;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web.Mvc;
 
 namespace RentCar.WebSite.Controllers
@@ -33,6 +34,40 @@ namespace RentCar.WebSite.Controllers
             var reservation = _reservationManager.GetReservationDetail(id);
             return GetModel(reservation);
         }
+
+        public ActionResult Delete(int ? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            else
+            {
+                var model = _reservationManager.Find(i=>i.Id==id);
+                if (model == null)
+                {
+                    return HttpNotFound();
+                }
+
+                return View(model);
+
+
+            }
+
+
+        }
+        [HttpPost]
+        public ActionResult Delete(int id)
+        {
+            Rezervasyon rezervasyon = _reservationManager.Find(i => i.Id == id);
+
+            _reservationManager.Delete(rezervasyon);
+            _reservationManager.Save();
+
+            return RedirectToAction("Index", "Reservation");
+
+        }
+
 
         [HttpPost]
         public ActionResult Detail(Rezervasyon reservation)
@@ -74,9 +109,9 @@ namespace RentCar.WebSite.Controllers
 
         private ActionResult GetModel(Rezervasyon reservation)
         {
-            var carlist = _carManager.List(i => i.IsActive)
-               .Select(i => new LookupItem() { ID = i.Id, Name = i.ArabaAdi }).OrderBy(o => o.Name).ToList();
-
+            var list=new List<LookupItem>() { new LookupItem() { ID = 0, Name = "Arabaları Seçiniz", Order = 0 } };
+            var carlist = _carManager.List(i => i.IsActive).Select(i => new LookupItem() { ID = i.Id, Name = i.ArabaAdi }).ToList();
+            list.AddRange(_carManager.List().Select(i => new LookupItem() { ID = i.Id, Name = string.Format("{0} - {1}", i.ArabaAdi, i.Locations) }).OrderBy(o => o.Name).ToList());
 
             var rentUserList = new List<LookupItem>() { new LookupItem() { ID = 0, Name = "Yeni Kiralayan", Order = 0 } };
             rentUserList.AddRange(_rentUserManager.List().Select(i => new LookupItem() { ID = i.Id, Name = string.Format("{0} - {1}", i.Name, i.PhoneNumber) }).OrderBy(o => o.Name).ToList());
@@ -84,7 +119,7 @@ namespace RentCar.WebSite.Controllers
             var model = new ReservationDetailModel()
             {
                 Reservation = reservation,
-                CarList = carlist,
+                CarList = list,
                 RentUserList = rentUserList,
                 Locations = LookupManager.GetLookups(LookupType.Locations),
                 ReservationStatuses = LookupManager.GetLookups(LookupType.ReservationStatus),

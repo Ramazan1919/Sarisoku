@@ -1,26 +1,15 @@
 ﻿@using RentCar.WebSite.Models
 @using DataEntity
-@{
-    Layout = null;
-}
+
 
 @{ 
     Admin adm = SessionModel.CurrentUser;
 
 }
-<!DOCTYPE html>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>View</title>
 
-    <link href="~/Content/bootstrap-theme.css" rel="stylesheet" />
-    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
-    <script src="~/Content/Login/vendor/jquery/jquery-3.2.1.min.js"></script>
-    <script src="~/Content/Login/vendor/bootstrap/js/bootstrap.min.js"></script>
-</head>
-<body style="background-color:dimgrey">
+
+<div style="background-color:aliceblue">
     <div class="row">
 
         <div class="col-md-8 col-sm-8 col-lg-8 col-md-offset-2 col-lg-offset-2 col-sm-offset-2 " style="margin-top:150px; background-image:url(../../Content/Login/images/bg-01.jpg);">
@@ -46,7 +35,7 @@
                             <td><a href="/Reservation/Index" class="btn btn-primary">Rezervasyon İşlemleri</a></td>
                             <td><a href="/Kampanya/Index" class="btn btn-primary">Kampanyaİşlemleri</a></td>
                         </tr>
-                       
+
 
                     </tbody>
                 </table>
@@ -56,10 +45,12 @@
             </div>
         </div>
     </div>
+    <br />
+    <br />
+    <br />
+    <br />
+</div>
 
-    
-</body>
-</html>
 
 
    

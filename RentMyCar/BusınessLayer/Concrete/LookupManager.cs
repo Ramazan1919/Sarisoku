@@ -26,7 +26,7 @@ namespace BusınessLayer.Concrete
             }
             catch (Exception ex)
             {
-
+                
             }
             return new List<LookupItem>();
         }
@@ -55,8 +55,8 @@ namespace BusınessLayer.Concrete
         {
             _lookupItems = _lookupItems ?? new List<LookupItem>();
 
-            _lookupItems.Add(new LookupItem() { ID = 1, Name = "İstanbul", Type = LookupType.Locations, ParentID = 0, Order = 2, Status = StatusType.Active });
-            _lookupItems.Add(new LookupItem() { ID = 2, Name = "Ankara", Type = LookupType.Locations, ParentID = 0, Order = 1, Status = StatusType.Active });
+            _lookupItems.Add(new LookupItem() { ID = 1, Name = "İstanbul", Type = LookupType.Locations, ParentID = 0, Order = 1, Status = StatusType.Active });
+            _lookupItems.Add(new LookupItem() { ID = 2, Name = "Ankara", Type = LookupType.Locations, ParentID = 0, Order = 2, Status = StatusType.Active });
             _lookupItems.Add(new LookupItem() { ID = 3, Name = "İzmir", Type = LookupType.Locations, ParentID = 0, Order = 3, Status = StatusType.Active });
             _lookupItems.Add(new LookupItem() { ID = 4, Name = "Kayseri", Type = LookupType.Locations, ParentID = 0, Order = 4, Status = StatusType.Active });
             _lookupItems.Add(new LookupItem() { ID = 5, Name = "Antalya", Type = LookupType.Locations, ParentID = 0, Order = 5, Status = StatusType.Active });
@@ -104,9 +104,9 @@ namespace BusınessLayer.Concrete
             AddItem(ref _lookupItems, (int)Marka.Skoda, "Skoda", LookupType.Marka,19);
             AddItem(ref _lookupItems, (int)Marka.Tesla, "Tesla", LookupType.Marka,20);
             AddItem(ref _lookupItems, (int)Marka.Toyota, "Toyota", LookupType.Marka,21);
-            AddItem(ref _lookupItems, (int)Marka.Volvo, "v", LookupType.Marka,22);
-            AddItem(ref _lookupItems, (int)Marka.Wolkswagen, "v", LookupType.Marka,23);
-            AddItem(ref _lookupItems, (int)Marka.Ford, "Ford", LookupType.Marka, 23);
+            AddItem(ref _lookupItems, (int)Marka.Volvo, "Volvo", LookupType.Marka,22);
+            AddItem(ref _lookupItems, (int)Marka.Wolkswagen, "Volkswagen", LookupType.Marka,23);
+            AddItem(ref _lookupItems, (int)Marka.Ford, "Ford", LookupType.Marka, 24);
 
         }
 
