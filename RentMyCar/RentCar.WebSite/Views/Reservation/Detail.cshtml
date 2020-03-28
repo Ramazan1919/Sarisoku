@@ -90,9 +90,8 @@
         <div class="form-group">
             <label class="col-md-2">&nbsp;</label>
             <div class="col-md-4">
-                <a href="javascript:window.history.go(-1);" class="btn btn-primary">Geri</a>
                 <button type="submit" class="btn btn-success">Kaydet</button>
-                @Html.ActionLink("Rezervasyon Listesine Dön", "Index", null, new { @class="btn btn-primary"})
+                @Html.ActionLink("Rezervasyon Listesine Dön", "Index", null, new { @class = "btn btn-primary" })
             </div>
         </div>
     </form>
@@ -108,7 +107,7 @@ else
     .field-validation-error { color: #ff0000; margin-top: 5px; display: block; }
     .dn { display: none !important; }
     .ui-datepicker { width: auto !important; }
-    body .ui-datepicker td.ui-datepicker-today a { border: 1px solid #0b5caf !important; background: #0b5caf !important; color: #fff !important; }
+    /*body .ui-datepicker td.ui-datepicker-today a { border: 1px solid #0b5caf !important; background: #0b5caf !important; color: #fff !important; }*/
     body .ui-datepicker td span, body .ui-datepicker td a { padding: 10px !important; }
 </style>
 
@@ -137,6 +136,8 @@ else
             }
             else {
                 $(".rentuser-field").addClass("dn");
+                $("#Reservation_RentUser_Name").val("#");
+                $("#Reservation_RentUser_PhoneNumber").val("#");
             }
             return false;
         });

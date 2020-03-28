@@ -17,11 +17,11 @@ namespace DataEntity
         public int RentUserID { get; set; }
 
         [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{0:dd.MM.yyyy}", ApplyFormatInEditMode = true)]
         public DateTime AlisTarihi { get; set; }
 
         [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{0:dd.MM.yyyy}", ApplyFormatInEditMode = true)]
         public DateTime IadeTarihi { get; set; }
 
         [Required(ErrorMessage ="Alış yeri seçmediniz!")]
@@ -33,6 +33,7 @@ namespace DataEntity
         public ReservationsStatus Status { get; set; }
 
         public virtual Car Car { get; set; }
+
         public virtual RentUser RentUser { get; set; }
     }
 }

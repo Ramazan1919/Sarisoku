@@ -154,10 +154,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\RentACarUIContext-20190826183818.mdf" />
-    <Content Include="App_Data\RentACarUIContext-20190826183818_log.ldf">
-      <DependentUpon>RentACarUIContext-20190826183818.mdf</DependentUpon>
-    </Content>
     <Content Include="bin\Antlr3.Runtime.dll" />
     <Content Include="bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll" />
     <Content Include="bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml" />
@@ -592,6 +588,7 @@
     <Content Include="Views\Reservation\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="App_Data\" />
     <Folder Include="Content\Admin\Content\Photos\Cars\" />
     <Folder Include="Content\Admin\Content\Photos\Kampanya\" />
     <Folder Include="obj\Debug\TempPE\" />
