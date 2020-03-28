@@ -7,13 +7,13 @@ namespace DataAccesLayer.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.4.0")]
-    public sealed partial class _hata : IMigrationMetadata
+    public sealed partial class _20200328_first : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(_hata));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(_20200328_first));
         
         string IMigrationMetadata.Id
         {
-            get { return "202003281654525__hata"; }
+            get { return "202003281732492_20200328_first"; }
         }
         
         string IMigrationMetadata.Source

@@ -55,9 +55,9 @@
     <Compile Include="Concrete\EF\GenericRepository.cs" />
     <Compile Include="Concrete\EF\RentACarContext.cs" />
     <Compile Include="Concrete\EF\RepositoryBase.cs" />
-    <Compile Include="Migrations\202003281654525__hata.cs" />
-    <Compile Include="Migrations\202003281654525__hata.designer.cs">
-      <DependentUpon>202003281654525__hata.cs</DependentUpon>
+    <Compile Include="Migrations\202003281732492_20200328_first.cs" />
+    <Compile Include="Migrations\202003281732492_20200328_first.designer.cs">
+      <DependentUpon>202003281732492_20200328_first.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -73,8 +73,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202003281654525__hata.resx">
-      <DependentUpon>202003281654525__hata.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202003281732492_20200328_first.resx">
+      <DependentUpon>202003281732492_20200328_first.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
