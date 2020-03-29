@@ -45,6 +45,7 @@ namespace RentCar.WebSite.Controllers
 
                     item.Status =0;
                 }
+                _reservationManager.Save();
             }
 
 
