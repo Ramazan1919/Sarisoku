@@ -1,0 +1,41 @@
+﻿@using BusınessLayer.Util;
+@using BusınessLayer.Concrete;
+
+@model List<DataEntity.RentUser>
+@{
+    ViewBag.Title = "Kiralayan Listesi";
+}
+
+<h2>
+    @ViewBag.Title
+    @Html.ActionLink("Admin Panele Dön", "AdminOperation", "Admin", null, new { @class = "btn btn-primary" })
+</h2>
+
+
+<table class="table table-bordered">
+    <tr>
+        <th>#ID</th>
+        <th>İsim</th>
+        <th>Telefon</th>
+        <th>İşlemler/</th>
+    </tr>
+
+    @foreach (var rentUser in Model)
+    {
+        <tr>
+            <td>@rentUser.Id</td>
+            <td>@rentUser.Name</td>
+            <td>@rentUser.PhoneNumber</td>
+            <td>
+                <a class="mb10 btn btn-success" href="@Url.RouteUrl("RentUserDetail", new { id= rentUser.Id})">Düzenle</a>
+                <a class="mb10 btn btn-warning" href="@Url.RouteUrl("RentUserReservations", new { rentUserId= rentUser.Id})">Rezervasyonları Gör</a>
+                @*<a class="mb10 btn btn-success" href="/Reservation/Delete/@rentUser.Id">Sil</a>*@
+            </td>
+        </tr>
+    }
+</table>
+
+<style>
+    body { max-width: 1120px; margin: 0 auto; }
+    .mb10 { margin-bottom: 10px; }
+</style>

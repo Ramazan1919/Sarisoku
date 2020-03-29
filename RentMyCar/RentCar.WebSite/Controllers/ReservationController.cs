@@ -25,9 +25,9 @@ namespace RentCar.WebSite.Controllers
             _rentUserManager = new RentUserManager();
         }
 
-        public ActionResult Index()
+        public ActionResult Index(int rentUserId=0)
         {
-            var searchResult = _reservationManager.GetReservationList();
+            var searchResult = _reservationManager.GetReservationList(rentUserId);
             return View(searchResult);
         }
 
@@ -35,7 +35,7 @@ namespace RentCar.WebSite.Controllers
         {
             var date = DateTime.Now;
 
-            var searchResult = _reservationManager.GetReservationList().Where(i => i.IadeTarihi == date || date>= i.IadeTarihi).ToList();
+            var searchResult = _reservationManager.GetReservationList(0).Where(i => i.IadeTarihi == date || date>= i.IadeTarihi).ToList();
 
             if (searchResult != null)
             {
