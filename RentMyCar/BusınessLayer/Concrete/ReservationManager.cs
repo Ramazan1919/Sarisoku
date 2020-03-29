@@ -18,9 +18,9 @@ namespace BusınessLayer.Concrete
             _rentUserManager = new RentUserManager();
         }
 
-        public List<Rezervasyon> GetReservationList()
+        public List<Rezervasyon> GetReservationList(int rentUserId)
         {
-            var list = List();
+            var list = rentUserId > 0 ? List(i => i.RentUserID == rentUserId) : List();
             if (list.HasElement())
             {
                 var carIds = list.Select(i => i.CarID).Distinct();

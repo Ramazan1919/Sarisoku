@@ -11,6 +11,9 @@ namespace RentCar.WebSite
 
             routes.MapRoute("ReservationManagement", "rezervasyon-yonetimi", new { controller = "Reservation", action = "Index" });
             routes.MapRoute("ReservationDetail", "rezervasyon-detay/{id}", new { controller = "Reservation", action = "Detail", id = UrlParameter.Optional });
+            routes.MapRoute("RentUserManagement", "kiralayan-yonetimi", new { controller = "RentUser", action = "Index" });
+            routes.MapRoute("RentUserDetail", "kiralayan-detay/{id}", new { controller = "RentUser", action = "Detail", id = UrlParameter.Optional });
+            routes.MapRoute("RentUserReservations", "kiralayan/{rentUserId}/rezervasyonlar", new { controller = "Reservation", action = "Index", rentUserId = UrlParameter.Optional });
 
             routes.MapRoute(
                 name: "Default",
