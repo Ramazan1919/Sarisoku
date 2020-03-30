@@ -11,7 +11,7 @@
 
     <a href="/Car/Create" class="btn btn-success"> Yeni Araba</a>
 
-    <a href="/Admin/AdminOperation" class="btn btn-danger"> Admin Panele Dön</a>
+    <a href="/Admin/Index" class="btn btn-danger"> Admin Panele Dön</a>
 
 
 </p>
@@ -110,7 +110,6 @@
         </td>
         <td>
             @Html.ActionLink("Düzenle", "Edit", new { id = item.Id }) |
-            @Html.ActionLink("Detayla", "Details", new { id = item.Id }) |
             @Html.ActionLink("Sil", "Delete", new { id = item.Id })
         </td>
     </tr>

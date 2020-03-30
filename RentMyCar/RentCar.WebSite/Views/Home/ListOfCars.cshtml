@@ -15,7 +15,7 @@
 <div class="container-fluid"><h1>Araç Kiralama</h1></div>
 
 <div class="main">
-
+ 
     <section id="page">
 
         <article>
@@ -39,7 +39,7 @@
                     </div>
                 </div>
                 <br />
-
+               
                 @if (!Model.HasRecord)
                 {
                     <h1>Arama kriterlerinize uygun araç bulamadık!</h1>
@@ -121,10 +121,10 @@
 
                                     @if (car.IndirimOrani > 0)
                                     {
-                                    <p>İndirimli: @(car.GuncelFiyat * days) ₺</p>
+                                        <p>İndirimli: @(car.GuncelFiyat * days) ₺</p>
                                     }
-                         
-                                   
+
+
                                     Rezervasyon Yap
 
                                 </button>
@@ -138,7 +138,7 @@
                 @if (Model.ReservedCars.HasElement())
                 {
 
-                     <h2>Rezervasyonu Devam Eden Araçlar</h2>
+                    <h2>Rezervasyonu Devam Eden Araçlar</h2>
                     foreach (var car in Model.ReservedCars)
                     {
                         <div class="box">

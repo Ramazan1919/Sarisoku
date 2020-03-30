@@ -5,37 +5,52 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Delete</h2>
 
-<h3>Silmek İsiyor Musun?</h3>
-<div>
-    <h4>Rezervasyon</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.AlisTarihi)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.AlisTarihi)
-        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.IadeTarihi)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.IadeTarihi)
-        </dd>
 
-    </dl>
+<div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-6">
 
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
 
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Listeye Dön", "Index")
+        <h3>Silmek İsiyor Musun?</h3>
+        <div>
+            <h4>Rezervasyon</h4>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.AlisTarihi)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.AlisTarihi)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.IadeTarihi)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.IadeTarihi)
+                </dd>
+
+            </dl>
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-actions no-color" style="margin-left:40px;">
+                    <input type="submit" value="Sil" class="btn btn-default" /> |
+                    @Html.ActionLink("Listeye Dön", "Index",null,new { @class="btn btn-info"})
+                </div>
+            }
         </div>
-    }
+
+
+    </div>
+
 </div>
+

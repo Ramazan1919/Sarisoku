@@ -28,7 +28,7 @@ namespace DataEntity
         [Required]
         public YakitTipi YakitTipi { get; set; }
 
-
+        [DisplayName("AlışYeri")]
         [Required]
         public Locations Locations { get; set; }
 

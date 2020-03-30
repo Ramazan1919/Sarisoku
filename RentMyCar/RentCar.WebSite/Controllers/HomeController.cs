@@ -75,43 +75,55 @@ namespace RentACar.Controllers
 
             if (model!=null)
             {
-                var carlist = carManager.List(x=>x.IsActive );
-
-                if (model.Locations > 0)
+                if (model.IadeTarihi <= model.AlisTarihi)
                 {
-                    carlist = carlist.Where(i => i.Locations == model.Locations).ToList();
+
+                    //  ModelState.AddModelError("Iadetarihi", "ıade tarihi Alış tarihinden küçük olamaz");
+
+                    ViewBag.hata = "Alış Tarihi İade Tarihine Eş veya Büyük Olamaz";
+
+                    return View("_PartialSearchcar");
                 }
-                if (model.CarID > 0)
+                else
                 {
-                    carlist = carlist.Where(i=>i.Id == model.CarID).ToList();
+                    var carlist = carManager.List(x => x.IsActive);
+
+                    if (model.Locations > 0)
+                    {
+                        carlist = carlist.Where(i => i.Locations == model.Locations).ToList();
+                    }
+                    if (model.CarID > 0)
+                    {
+                        carlist = carlist.Where(i => i.Id == model.CarID).ToList();
+                    }
+
+                    if (model.VitesTipi > 0)
+                    {
+                        carlist = carlist.Where(i => i.VitesTipi == model.VitesTipi).ToList();
+                    }
+
+                    if (model.YakitTipi > 0)
+                    {
+                        carlist = carlist.Where(i => i.YakitTipi == model.YakitTipi).ToList();
+                    }
+                    if (model.KasaTipi > 0)
+                    {
+                        carlist = carlist.Where(i => i.KasaTipi == model.KasaTipi).ToList();
+                    }
+
+
+                    var reservationList = rezervationManager.List(x => x.Status == ReservationsStatus.Active && ((x.AlisTarihi < model.AlisTarihi && x.IadeTarihi > model.AlisTarihi)
+                                            || (x.AlisTarihi > model.AlisTarihi && x.AlisTarihi >= model.IadeTarihi)));
+
+
+                    resultModel.AvailableCars = carlist.Where(i => !reservationList.Any(r => r.CarID == i.Id)).OrderBy(o => o.GuncelFiyat).ToList();
+                    resultModel.ReservedCars = carlist.Where(i => reservationList.Any(r => r.CarID == i.Id)).ToList();
+                    resultModel.ActiveReservations = reservationList;
                 }
-
-                if (model.VitesTipi > 0)
-                {
-                    carlist = carlist.Where(i => i.VitesTipi == model.VitesTipi).ToList();
-                }
-
-                if (model.YakitTipi > 0)
-                {
-                    carlist = carlist.Where(i => i.YakitTipi == model.YakitTipi).ToList();
-                }
-                if (model.KasaTipi > 0)
-                {
-                    carlist = carlist.Where(i => i.KasaTipi == model.KasaTipi).ToList();
-                }
-
-
-                var reservationList = rezervationManager.List(x => x.Status == ReservationsStatus.Active && ((x.AlisTarihi < model.AlisTarihi && x.IadeTarihi > model.AlisTarihi)
-                                        || (x.AlisTarihi > model.AlisTarihi && x.AlisTarihi >= model.IadeTarihi)));
-
-
-                resultModel.AvailableCars = carlist.Where(i=> !reservationList.Any(r=>r.CarID==i.Id)).ToList();
-                resultModel.ReservedCars = carlist.Where(i => reservationList.Any(r => r.CarID == i.Id)).ToList();
-                resultModel.ActiveReservations = reservationList;
+             
               
 
             }
-
             return View("ListOfCars", resultModel);
         }
     }

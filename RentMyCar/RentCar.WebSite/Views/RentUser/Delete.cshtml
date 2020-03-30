@@ -1,0 +1,52 @@
+﻿@model DataEntity.RentUser
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-6">
+
+
+        <h3>Silmek istediğine Emin Misin ?</h3>
+        <div>
+
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Name)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Name)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.PhoneNumber)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.PhoneNumber)
+                </dd>
+
+            </dl>
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-actions no-color" style="margin-left:80px;">
+                    <input type="submit" value="Sil" class="btn btn-danger" /> |
+                    @Html.ActionLink("Listeye Dön", "Index",null,new { @class="btn btn-success"})
+                </div>
+            }
+        </div>
+
+
+    </div>
+
+</div>

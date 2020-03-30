@@ -51,9 +51,10 @@ namespace RentCar.WebSite.Controllers
                 kampanyaUrl.ContentType == "image/png"))
                 {
                     kampanyaManager.Insert(kampanya);
-                    string filename = $"user_{kampanya.Id}.{kampanyaUrl.ContentType.Split('/')[1]}";
+                    string filename = $"userKampanya_{kampanya.Id}.{kampanyaUrl.ContentType.Split('/')[1]}";
                     kampanyaUrl.SaveAs(Server.MapPath($"~/Content/Admin/Content/Photos/Kampanya/{filename}"));
                     kampanya.kampanyaUrl = filename;
+                    kampanyaManager.Update(kampanya);
                     kampanyaManager.Save();
                 }
                 return RedirectToAction("Index", "Kampanya");
@@ -97,8 +98,8 @@ namespace RentCar.WebSite.Controllers
                 kampanyaUrl.ContentType == "image/jpg" ||
                 kampanyaUrl.ContentType == "image/png"))
                 {
-                    kampanyaManager.Insert(kampanya);
-                    string filename = $"userCamp_{kampanya.Id}.{kampanyaUrl.ContentType.Split('/')[1]}";
+                   // kampanyaManager.Insert(kampanya);
+                    string filename = $"userKampanya_{kampanya.Id}.{kampanyaUrl.ContentType.Split('/')[1]}";
                     kampanyaUrl.SaveAs(Server.MapPath($"~/Content/Admin/Content/Photos/Kampanya/{filename}"));
                     kampanya.kampanyaUrl = filename;
                     kampanyaManager.Save();

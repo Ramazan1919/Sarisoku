@@ -24,9 +24,7 @@ namespace RentCar.WebSite.Models
             }
         }
 
-        public decimal getTotal { get; set; }
-
-        public decimal getIndirim { get; set; }
+     
 
     }
 }

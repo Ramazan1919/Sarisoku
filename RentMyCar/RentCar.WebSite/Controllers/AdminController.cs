@@ -12,7 +12,7 @@ namespace RentCar.WebSite.Controllers
     {
         // GET: Admin
       
-        public ActionResult AdminOperation()
+        public ActionResult Index()
         {
             return View();
         }

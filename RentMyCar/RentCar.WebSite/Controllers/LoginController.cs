@@ -34,7 +34,7 @@ namespace RentCar.WebSite.Controllers
                     SessionModel.Set<Admin>("login", admin);
 
 
-                    return RedirectToAction("AdminOperation", "Admin");
+                    return RedirectToAction("Index", "Admin");
 
                 }
 

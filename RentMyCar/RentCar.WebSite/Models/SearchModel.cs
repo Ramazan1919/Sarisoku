@@ -1,5 +1,7 @@
 ﻿using DataEntity;
 using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
 namespace RentCar.WebSite.Models
@@ -14,7 +16,10 @@ namespace RentCar.WebSite.Models
 
         public KasaTipi KasaTipi { get; set; }
 
+        [DisplayName("Alış-İade Yeri ")]
         public Locations Locations { get; set; }
+
+    
 
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
@@ -24,5 +29,9 @@ namespace RentCar.WebSite.Models
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime IadeTarihi { get; set; }
+
+
+
+
     }
 }
