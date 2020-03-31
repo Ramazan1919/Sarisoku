@@ -6,7 +6,7 @@
 
 @{
 
-    var days=(Model.SearchModel.IadeTarihi - Model.SearchModel.AlisTarihi).TotalDays;
+    var days = (Model.SearchModel.IadeTarihi - Model.SearchModel.AlisTarihi).TotalDays;
 
 
 }
@@ -15,7 +15,7 @@
 <div class="container-fluid"><h1>Araç Kiralama</h1></div>
 
 <div class="main">
- 
+
     <section id="page">
 
         <article>
@@ -39,7 +39,7 @@
                     </div>
                 </div>
                 <br />
-               
+
                 @if (!Model.HasRecord)
                 {
                     <h1>Arama kriterlerinize uygun araç bulamadık!</h1>

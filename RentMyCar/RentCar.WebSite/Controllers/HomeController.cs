@@ -80,9 +80,10 @@ namespace RentACar.Controllers
 
                     //  ModelState.AddModelError("Iadetarihi", "ıade tarihi Alış tarihinden küçük olamaz");
 
-                    ViewBag.hata = "Alış Tarihi İade Tarihine Eş veya Büyük Olamaz";
+                    TempData["msg"] = "<script>alert('Alış Tarihi Iade Tarihinden Küçük Olamaz');</script>";
 
-                    return View("_PartialSearchcar");
+
+                    return RedirectToAction("Index","Home");
                 }
                 else
                 {

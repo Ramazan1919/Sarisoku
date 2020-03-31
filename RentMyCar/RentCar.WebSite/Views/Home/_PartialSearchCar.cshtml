@@ -21,7 +21,7 @@
         {
             @Html.AntiForgeryToken()
 
-            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @*@Html.ValidationSummary(false, "", new { @class = "text-danger" })*@
 
             <div class="row">
 
@@ -60,21 +60,21 @@
                     <div>
                         @Html.TextBoxFor(x => x.AlisTarihi, new { @class = "form-control datepickstart", maxlength = 20 })
                         
-                        @Html.ValidationMessageFor(model => model.AlisTarihi, "", new { @class = "text-danger" })
+                     
                     </div>
                 </div>
 
                 <div class="form-group col-md-3 ">
                     @if (ViewBag.hata != null)
                     {
-                   <p class="alert ">@ViewBag.hata</p> 
+                   <p class="text-" style="color:aliceblue;">@ViewBag.hata</p> 
                     }
 
                     @Html.LabelFor(model => model.IadeTarihi, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div>
-                        @Html.TextBoxFor(x => x.IadeTarihi, new { @class = "form-control datepickstart2", maxlength = 20 })
+                        @Html.TextBoxFor(x => x.IadeTarihi, new { @class = "form-control datepickent", maxlength = 20 })
                       
-                        @Html.ValidationMessageFor(model => model.IadeTarihi, "", new { @class = "text-danger" })
+                      
                     </div>
                 </div>
 
@@ -90,22 +90,23 @@
 </section>
 
 
+
+
+
+
+
+
+
+
+
+
+
 <link href="~/Content/Scripts/Datepicker/bootstrap-datepicker.min.css" rel="stylesheet" />
-<style>
-    
-    
-    .ui-datepicker {
-        width: auto !important;
-    }
-    /*body .ui-datepicker td.ui-datepicker-today a { border: 1px solid #0b5caf !important; background: #0b5caf !important; color: #fff !important; }*/
-    body .ui-datepicker td span, body .ui-datepicker td a {
-        padding: 10px !important;
-    }
-</style>
+
 
 <script src="~/Scripts/jquery-3.3.1.min.js"></script>
 <script src="~/Content/Scripts/Datepicker/bootstrap-datepicker.min.js"></script>
-<script src="~/Content/Scripts/Datepicker/bootstrap-datepicker.tr.min.js"></script>
+@*<script src="~/Content/Scripts/Datepicker/bootstrap-datepicker.tr.min.js"></script>*@
 
 <script type="text/javascript">
 
@@ -121,48 +122,31 @@
         var temp = $(this).datepicker('getDate');
         var d = new Date(temp);
         d.setDate(d.getDate() );
-        $('.datepickend').datepicker({
+        $('.datepickstart').datepicker({
             autoclose: true,
             format: 'dd-mm-yyyy',
             startDate: d
-        }).on('changeDate', function () {
-            var temp1 = $(this).datepicker('getDate');
-            var d1 = new Date(temp1);
-            d1.setDate(d1.getDate() );
-            $('.datepickthird').datepicker({
-                autoclose: true,
-                format: 'dd-mm-yyyy',
-                startDate: d1
-            });
         });
     });
-    var date = new Date();
-    date.setDate(date.getDate()+1);
-    $('.datepickstart2').datepicker({
+
+
+    $('.datepickent').datepicker({
         autoclose: true,
         todayHighlight: true,
         format: 'dd-mm-yyyy',
         startDate: date
     });
-    $('.datepickstart2').datepicker().on('changeDate', function () {
+    $('.datepickent').datepicker().on('changeDate', function () {
         var temp = $(this).datepicker('getDate');
         var d = new Date(temp);
         d.setDate(d.getDate());
-        $('.datepickend').datepicker({
+        $('.datepickent').datepicker({
             autoclose: true,
             format: 'dd-mm-yyyy',
             startDate: d
-        }).on('changeDate', function () {
-            var temp1 = $(this).datepicker('getDate');
-            var d1 = new Date(temp1);
-            d1.setDate(d1.getDate());
-            $('.datepickthird').datepicker({
-                autoclose: true,
-                format: 'dd-mm-yyyy',
-                startDate: d1
-            });
         });
     });
+
 
 
 
