@@ -26,16 +26,13 @@
                         <ul>
                             <li>
                                 <span>Alış ve Teslim Yeri</span><h2>@Model.SearchModel.Locations </h2>
-
                             </li>
                             <li>
-                                <span>Alış ve Teslim Tarihi</span><h2>@Model.SearchModel.AlisTarihi - @Model.SearchModel.IadeTarihi</h2>
-
+                                <span>Alış ve Teslim Tarihi</span><h2>@Model.SearchModel.AlisTarihi.ToString("dd.MM.yyyy") - @Model.SearchModel.IadeTarihi.ToString("dd.MM.yyyy")</h2>
                             </li>
                             <li class="active"><span>Araç Modeli</span><h2>Araç Modelini Seçin</h2></li>
                             <li><span>Rezervasyon </span><h2>Rezervasyon İçin İletişime Geçin</h2></li>
                         </ul>
-
                     </div>
                 </div>
                 <br />

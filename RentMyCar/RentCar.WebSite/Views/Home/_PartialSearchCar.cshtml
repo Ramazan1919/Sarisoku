@@ -17,7 +17,7 @@
             <h2>Yepyeni Bir Deneyim</h2>
         </div>
 
-        @using (Html.BeginForm("SearchCar", "Home", FormMethod.Get))
+        @using (Html.BeginForm("SearchCar", "Home", FormMethod.Post))
         {
             @Html.AntiForgeryToken()
 
@@ -58,9 +58,7 @@
                 <div class="form-group col-md-3 ">
                     @Html.LabelFor(model => model.AlisTarihi, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div>
-                        @Html.TextBoxFor(x => x.AlisTarihi, new { @class = "form-control datepickstart", maxlength = 20 })
-                        
-                     
+                        @Html.TextBoxFor(x => x.AlisTarihi, "{0:dd.MM.yyyy}", new { @class = "form-control datepickstart", maxlength = 20 })
                     </div>
                 </div>
 
@@ -72,9 +70,7 @@
 
                     @Html.LabelFor(model => model.IadeTarihi, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div>
-                        @Html.TextBoxFor(x => x.IadeTarihi, new { @class = "form-control datepickent", maxlength = 20 })
-                      
-                      
+                        @Html.TextBoxFor(x => x.IadeTarihi, "{0:dd.MM.yyyy}", new { @class = "form-control datepickent", maxlength = 20 })
                     </div>
                 </div>
 

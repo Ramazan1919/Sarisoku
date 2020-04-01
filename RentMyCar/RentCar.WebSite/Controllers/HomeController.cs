@@ -18,8 +18,8 @@ namespace RentACar.Controllers
         public ActionResult Index()
         {
 
-            
-           ViewBag.model= kampanyaManager.List();
+
+            ViewBag.model = kampanyaManager.List();
             ViewBag.ModelCount = kampanyaManager.List().Count;
             return View();
         }
@@ -44,7 +44,7 @@ namespace RentACar.Controllers
         public ActionResult GetKampanya()
         {
 
-            var model = kampanyaManager.List().Where(x=>x.IsActive==true).ToList();
+            var model = kampanyaManager.List().Where(x => x.IsActive == true).ToList();
 
             return View(model);
         }
@@ -52,20 +52,21 @@ namespace RentACar.Controllers
 
         public ActionResult KampanyaDetay(int id)
         {
-            var model = kampanyaManager.List().FirstOrDefault(i =>i.Id==id);
+            var model = kampanyaManager.List().FirstOrDefault(i => i.Id == id);
 
-                return View(model);
+            return View(model);
         }
 
 
 
         public ActionResult Contact()
         {
-           
+
 
             return View();
         }
-        
+
+        [HttpPost]
         public ActionResult SearchCar(SearchModel model)
         {
             var resultModel = new SearchResultModel()
@@ -73,17 +74,14 @@ namespace RentACar.Controllers
                 SearchModel = model
             };
 
-            if (model!=null)
+            if (model != null)
             {
                 if (model.IadeTarihi <= model.AlisTarihi)
                 {
-
                     //  ModelState.AddModelError("Iadetarihi", "ıade tarihi Alış tarihinden küçük olamaz");
+                    TempData["msg"] = "<script>alert('İade Tarihi Alış Tarihinden Küçük Olamaz');</script>";
 
-                    TempData["msg"] = "<script>alert('Alış Tarihi Iade Tarihinden Küçük Olamaz');</script>";
-
-
-                    return RedirectToAction("Index","Home");
+                    return RedirectToAction("Index", "Home");
                 }
                 else
                 {
@@ -112,7 +110,6 @@ namespace RentACar.Controllers
                         carlist = carlist.Where(i => i.KasaTipi == model.KasaTipi).ToList();
                     }
 
-
                     var reservationList = rezervationManager.List(x => x.Status == ReservationsStatus.Active && ((x.AlisTarihi < model.AlisTarihi && x.IadeTarihi > model.AlisTarihi)
                                             || (x.AlisTarihi > model.AlisTarihi && x.AlisTarihi >= model.IadeTarihi)));
 
@@ -121,9 +118,6 @@ namespace RentACar.Controllers
                     resultModel.ReservedCars = carlist.Where(i => reservationList.Any(r => r.CarID == i.Id)).ToList();
                     resultModel.ActiveReservations = reservationList;
                 }
-             
-              
-
             }
             return View("ListOfCars", resultModel);
         }
