@@ -66,7 +66,7 @@ namespace RentACar.Controllers
             return View();
         }
 
-        [HttpPost]
+        [HttpGet]
         public ActionResult SearchCar(SearchModel model)
         {
             var resultModel = new SearchResultModel()
