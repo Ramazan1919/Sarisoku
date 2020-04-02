@@ -55,7 +55,7 @@
             {
 
                 Id = 1,
-                IndirimOrani = 10,
+                IndirimOrani = "10",
                 IsActive = true,
                 kampanyaUrl="deneme.jpg",
                 Text="Yuzde 10 indirimle tüm arabalarda erken rezervasyon indirimiz"

@@ -15,14 +15,13 @@ namespace DataEntity
 
         public string kampanyaUrl { get; set; }
 
-        [Required]
         public string Text { get; set; }
 
        
         public bool IsActive { get; set; }
 
-        [Required]
-        public int IndirimOrani { get; set; }
+ 
+        public string IndirimOrani { get; set; }
 
 
     }

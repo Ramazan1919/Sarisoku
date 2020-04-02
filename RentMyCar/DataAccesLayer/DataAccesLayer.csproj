@@ -55,9 +55,13 @@
     <Compile Include="Concrete\EF\GenericRepository.cs" />
     <Compile Include="Concrete\EF\RentACarContext.cs" />
     <Compile Include="Concrete\EF\RepositoryBase.cs" />
-    <Compile Include="Migrations\202003281732492_20200328_first.cs" />
-    <Compile Include="Migrations\202003281732492_20200328_first.designer.cs">
-      <DependentUpon>202003281732492_20200328_first.cs</DependentUpon>
+    <Compile Include="Migrations\202003311931085_kampanya.cs" />
+    <Compile Include="Migrations\202003311931085_kampanya.designer.cs">
+      <DependentUpon>202003311931085_kampanya.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202003311941244_new.cs" />
+    <Compile Include="Migrations\202003311941244_new.designer.cs">
+      <DependentUpon>202003311941244_new.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -73,8 +77,11 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202003281732492_20200328_first.resx">
-      <DependentUpon>202003281732492_20200328_first.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202003311931085_kampanya.resx">
+      <DependentUpon>202003311931085_kampanya.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202003311941244_new.resx">
+      <DependentUpon>202003311941244_new.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

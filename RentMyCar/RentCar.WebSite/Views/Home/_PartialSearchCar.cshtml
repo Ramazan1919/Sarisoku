@@ -113,16 +113,8 @@
         todayHighlight: true,
         format: 'dd-mm-yyyy',
         startDate: date
-    });
-    $('.datepickstart').datepicker().on('changeDate', function () {
-        var temp = $(this).datepicker('getDate');
-        var d = new Date(temp);
-        d.setDate(d.getDate() );
-        $('.datepickstart').datepicker({
-            autoclose: true,
-            format: 'dd-mm-yyyy',
-            startDate: d
-        });
+    }).on('changeDate', function () {
+        $(this).datepicker('hide');
     });
 
 
@@ -131,16 +123,8 @@
         todayHighlight: true,
         format: 'dd-mm-yyyy',
         startDate: date
-    });
-    $('.datepickent').datepicker().on('changeDate', function () {
-        var temp = $(this).datepicker('getDate');
-        var d = new Date(temp);
-        d.setDate(d.getDate());
-        $('.datepickent').datepicker({
-            autoclose: true,
-            format: 'dd-mm-yyyy',
-            startDate: d
-        });
+    }).on('changeDate', function () {
+        $(this).datepicker('hide'); 
     });
 
 
