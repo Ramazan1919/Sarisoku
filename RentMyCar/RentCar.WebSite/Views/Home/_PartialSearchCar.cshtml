@@ -17,60 +17,58 @@
             <h2>Yepyeni Bir Deneyim</h2>
         </div>
 
-        @using (Html.BeginForm("SearchCar", "Home", FormMethod.Post))
-        {
-            @Html.AntiForgeryToken()
+        <form action="/Home/SearchCar" method="get" enctype="multipart/form-data">
 
             @*@Html.ValidationSummary(false, "", new { @class = "text-danger" })*@
 
             <div class="row">
 
                 <div class="form-group col-md-3 ">
-
+                    
                     @Html.LabelFor(model => model.Locations, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="dropdown">
                         @Html.DropDownListFor(x => x.Locations, locations.ToItems(Model == null ? 0 : (int)Model.Locations), new { @class = "form-control" })
-                       
+
                     </div>
                 </div>
                 <div class="form-group col-md-3 ">
                     @Html.LabelFor(model => model.KasaTipi, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="dropdown">
                         @Html.DropDownListFor(x => x.KasaTipi, kasatipi.ToItems(Model == null ? 0 : (int)Model.KasaTipi), new { @class = "form-control" })
-                   
+
                     </div>
                 </div>
                 <div class="form-group col-md-3 ">
                     @Html.LabelFor(model => model.VitesTipi, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="dropdown">
                         @Html.DropDownListFor(x => x.VitesTipi, vitesTipi.ToItems(Model == null ? 0 : (int)Model.VitesTipi), new { @class = "form-control" })
-             
+
                     </div>
                 </div>
                 <div class="form-group col-md-3 ">
                     @Html.LabelFor(model => model.YakitTipi, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="dropdown">
                         @Html.DropDownListFor(x => x.YakitTipi, yakitTipi.ToItems(Model == null ? 0 : (int)Model.YakitTipi), new { @class = "form-control" })
-                     
+
                     </div>
                 </div>
 
                 <div class="form-group col-md-3 ">
                     @Html.LabelFor(model => model.AlisTarihi, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div>
-                        @Html.TextBoxFor(x => x.AlisTarihi, "{0:dd.MM.yyyy}", new { @class = "form-control datepickstart", maxlength = 20 })
+                        @Html.TextBoxFor(x => x.AlisTarihi, "{0:dd.MM.yyyy}", new { @class = "form-control datepickstart", maxlength = 20, autocomplete = "off" })
                     </div>
                 </div>
 
                 <div class="form-group col-md-3 ">
                     @if (ViewBag.hata != null)
                     {
-                   <p class="text-" style="color:aliceblue;">@ViewBag.hata</p> 
+                        <p class="text-" style="color:aliceblue;">@ViewBag.hata</p>
                     }
 
                     @Html.LabelFor(model => model.IadeTarihi, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div>
-                        @Html.TextBoxFor(x => x.IadeTarihi, "{0:dd.MM.yyyy}", new { @class = "form-control datepickent", maxlength = 20 })
+                        @Html.TextBoxFor(x => x.IadeTarihi, "{0:dd.MM.yyyy}", new { @class = "form-control datepickent", maxlength = 20, autocomplete = "off" })
                     </div>
                 </div>
 
@@ -79,21 +77,9 @@
                 </div>
 
             </div>
-
-        }
-
+        </form>
     </div>
 </section>
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -107,24 +93,42 @@
 <script type="text/javascript">
 
     var date = new Date();
-    date.setDate(date.getDate() );
+    date.setDate(date.getDate());
     $('.datepickstart').datepicker({
         autoclose: true,
         todayHighlight: true,
-        format: 'dd-mm-yyyy',
+        format: 'dd.mm.yyyy',
         startDate: date
     }).on('changeDate', function () {
         $(this).datepicker('hide');
+    });
+    $('.datepickstart').datepicker().on('changeDate', function () {
+        var temp = $(this).datepicker('getDate');
+        var d = new Date(temp);
+        d.setDate(d.getDate() );
+        $('.datepickstart').datepicker({
+            autoclose: true,
+            format: 'dd-mm-yyyy',
+            startDate: d
+        });
     });
 
 
     $('.datepickent').datepicker({
         autoclose: true,
         todayHighlight: true,
-        format: 'dd-mm-yyyy',
+        format: 'dd.mm.yyyy',
         startDate: date
-    }).on('changeDate', function () {
-        $(this).datepicker('hide'); 
+    });
+    $('.datepickent').datepicker().on('changeDate', function () {
+        var temp = $(this).datepicker('getDate');
+        var d = new Date(temp);
+        d.setDate(d.getDate());
+        $('.datepickent').datepicker({
+            autoclose: true,
+            format: 'dd-mm-yyyy',
+            startDate: d
+        });
     });
 
 
