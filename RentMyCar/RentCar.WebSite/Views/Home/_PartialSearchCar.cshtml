@@ -102,16 +102,16 @@
     }).on('changeDate', function () {
         $(this).datepicker('hide');
     });
-    $('.datepickstart').datepicker().on('changeDate', function () {
-        var temp = $(this).datepicker('getDate');
-        var d = new Date(temp);
-        d.setDate(d.getDate() );
-        $('.datepickstart').datepicker({
-            autoclose: true,
-            format: 'dd-mm-yyyy',
-            startDate: d
-        });
-    });
+    //$('.datepickstart').datepicker().on('changeDate', function () {
+    //    var temp = $(this).datepicker('getDate');
+    //    var d = new Date(temp);
+    //    d.setDate(d.getDate() );
+    //    $('.datepickstart').datepicker({
+    //        autoclose: true,
+    //        format: 'dd-mm-yyyy',
+    //        startDate: d
+    //    });
+    //});
 
 
     $('.datepickent').datepicker({
@@ -120,19 +120,16 @@
         format: 'dd.mm.yyyy',
         startDate: date
     });
-    $('.datepickent').datepicker().on('changeDate', function () {
-        var temp = $(this).datepicker('getDate');
-        var d = new Date(temp);
-        d.setDate(d.getDate());
-        $('.datepickent').datepicker({
-            autoclose: true,
-            format: 'dd-mm-yyyy',
-            startDate: d
-        });
-    });
-
-
-
+    //$('.datepickent').datepicker().on('changeDate', function () {
+    //    var temp = $(this).datepicker('getDate');
+    //    var d = new Date(temp);
+    //    d.setDate(d.getDate());
+    //    $('.datepickent').datepicker({
+    //        autoclose: true,
+    //        format: 'dd-mm-yyyy',
+    //        startDate: d
+    //    });
+    //});
 
 </script>
 

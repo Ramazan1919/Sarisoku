@@ -25,7 +25,7 @@
 
                         <ul>
                             <li>
-                                <span>Alış ve Teslim Yeri</span><h2>@Model.SearchModel.Locations </h2>
+                                <span>Alış ve Teslim Yeri</span><h2>@(Model.SearchModel.Locations == DataEntity.Locations.None ? "Belirtilmemiş": Model.SearchModel.Locations.ToString()) </h2>
                             </li>
                             <li>
                                 <span>Alış ve Teslim Tarihi</span><h2>@Model.SearchModel.AlisTarihi.ToString("dd.MM.yyyy") - @Model.SearchModel.IadeTarihi.ToString("dd.MM.yyyy")</h2>
@@ -295,8 +295,8 @@
 <script src="~/Content/Scripts/jquery.mask.min.js"></script>
 <script src="~/Content/Scripts/buyukharf.js"></script>
 <script src="~/Content/Scripts/page.js?v=3.1"></script>
-<script src="~/Content/Scripts/jquery-ui.min.js"></script>
-<script src="~/Content/Scripts/daterangepicker.tr.js"></script>
+@*<script src="~/Content/Scripts/jquery-ui.min.js"></script>*@
+@*<script src="~/Content/Scripts/daterangepicker.tr.js"></script>*@
 <script>
     $(function () {
         $('[data-toggle="tooltip"]').tooltip()
